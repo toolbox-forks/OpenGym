@@ -1,5 +1,13 @@
 // Korean UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Apple 건강",
+  "Sync with Apple Health": "Apple 건강과 동기화",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "운동, 에너지와 신체 측정값을 저장합니다. 신체 측정값, 심박수와 회복 정보를 읽습니다. 데이터는 기기와 개인 서버에 보관됩니다.",
+  "Turning this off keeps existing data in Apple Health.": "끄더라도 기존 데이터는 Apple 건강에 남습니다.",
+  "Simulator Health store": "시뮬레이터 건강 저장소",
+  "Could not sync Apple Health": "Apple 건강을 동기화하지 못했습니다",
+
   'Confirm': '확인',
   'Cancel': '취소',
   'Press back again to exit': '뒤로를 한 번 더 누르면 종료됩니다',

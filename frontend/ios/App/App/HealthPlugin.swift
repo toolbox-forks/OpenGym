@@ -107,11 +107,29 @@ actor AppleHealthStore: HealthRecordStore {
     }
 }
 
+/// Atomic replacement retains the previous identity map if the app dies during a write.
+enum HealthPreferencesFile {
+    static func read(_ url: URL) throws -> [String: Any] {
+        guard FileManager.default.fileExists(atPath: url.path) else { return [:] }
+        guard let result = try JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any] else {
+            throw HealthMappingError.invalidIdentity
+        }
+        return result
+    }
+    static func write(_ object: [String: Any], to url: URL) throws {
+        let data = try JSONSerialization.data(withJSONObject: object)
+        try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
+        try data.write(to: url, options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication])
+    }
+}
+
 @objc(HealthPlugin)
 final class HealthPlugin: CAPPlugin, CAPBridgedPlugin {
     let identifier = "HealthPlugin"
     let jsName = "AppleHealth"
     let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "preferences", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "savePreferences", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "status", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "authorize", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "write", returnType: CAPPluginReturnPromise),
@@ -136,6 +154,18 @@ final class HealthPlugin: CAPPlugin, CAPBridgedPlugin {
         #else
         return HKHealthStore.isHealthDataAvailable() ? "healthkit" : "unsupported"
         #endif
+    }
+    private var preferencesURL: URL {
+        FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("opengym-apple-health.json")
+    }
+    @objc func preferences(_ call: CAPPluginCall) {
+        do { call.resolve(try HealthPreferencesFile.read(preferencesURL)) }
+        catch { call.reject(error.localizedDescription, "storage", error) }
+    }
+    @objc func savePreferences(_ call: CAPPluginCall) {
+        guard let object = call.getObject("preferences") else { call.reject("Missing preferences", "mapping"); return }
+        do { try HealthPreferencesFile.write(object, to: preferencesURL); call.resolve() }
+        catch { call.reject(error.localizedDescription, "storage", error) }
     }
     @objc func status(_ call: CAPPluginCall) { call.resolve(["mode": Self.mode]) }
     @objc func authorize(_ call: CAPPluginCall) {

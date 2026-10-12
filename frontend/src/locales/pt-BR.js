@@ -1405,4 +1405,12 @@ export const PT_BR_OVERRIDES = {
   'Releases are checked on GitHub. The download is verified against its checksum before the installer opens.': 'As versões são verificadas no GitHub. O download é conferido pela soma de verificação antes de abrir o instalador.',
 }
 
-export default { ...pt, ...PT_BR_OVERRIDES }
+export default { ...pt, ...PT_BR_OVERRIDES,
+  // Apple Health purpose and controls
+  "Apple Health": "Saúde da Apple",
+  "Sync with Apple Health": "Sincronizar com a Saúde da Apple",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "Salva treinos, energia e medidas corporais. Lê medidas, frequência cardíaca e recuperação. Os dados ficam no seu dispositivo e no seu próprio servidor.",
+  "Turning this off keeps existing data in Apple Health.": "Desativar mantém os dados existentes na Saúde da Apple.",
+  "Simulator Health store": "Dados de Saúde do simulador",
+  "Could not sync Apple Health": "Não foi possível sincronizar a Saúde da Apple",
+}

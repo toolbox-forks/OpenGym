@@ -23,4 +23,25 @@ final class HealthPluginTests: XCTestCase {
         XCTAssertEqual(HealthPlugin.mode, "mock")
         #endif
     }
+    func testPreferencesAtomicReplacementAndRelaunch() throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let file = folder.appendingPathComponent("health.json")
+        XCTAssertTrue(try HealthPreferencesFile.read(file).isEmpty)
+        try HealthPreferencesFile.write(["identities": ["old-id": "uuid-one"]], to: file)
+        try HealthPreferencesFile.write(["identities": ["old-id": "uuid-two"]], to: file)
+        let restored = try HealthPreferencesFile.read(file)
+        XCTAssertEqual((restored["identities"] as? [String: String])?["old-id"], "uuid-two")
+    }
+    func testPreferencesCorruptionAndFailedWriteCannotRegenerateIdentity() throws {
+        let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let file = folder.appendingPathComponent("health.json")
+        try HealthPreferencesFile.write(["id": "stable"], to: file)
+        XCTAssertThrowsError(try HealthPreferencesFile.write(["bad": Double.nan], to: file))
+        XCTAssertEqual(try HealthPreferencesFile.read(file)["id"] as? String, "stable")
+        try Data("{broken".utf8).write(to: file)
+        XCTAssertThrowsError(try HealthPreferencesFile.read(file))
+    }
 }

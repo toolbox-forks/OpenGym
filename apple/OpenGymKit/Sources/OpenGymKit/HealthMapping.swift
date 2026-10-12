@@ -85,8 +85,8 @@ public actor MockHealthRecordStore: HealthRecordStore {
         state=next // adopt only after the durable write succeeds
     }
     public func upsert(workout:HealthWorkoutRecord) throws {
-        if let old=state.workouts[workout.clientId],old.version>=workout.version {return}
-        var next=state;next.workouts[workout.clientId]=workout;try commit(next)
+        if let old=state.workouts[workout.uuid],old.version>=workout.version {return}
+        var next=state;next.workouts[workout.uuid]=workout;try commit(next)
     }
     public func upsert(measurement:HealthMeasurementRecord) throws {
         if let old=state.measurements[measurement.clientId],old.version>=measurement.version {return}

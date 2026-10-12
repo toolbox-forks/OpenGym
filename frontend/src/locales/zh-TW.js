@@ -1,4 +1,12 @@
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Apple 健康",
+  "Sync with Apple Health": "與 Apple 健康同步",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "儲存訓練、能量和身體測量資料。讀取身體測量、心率和恢復資料。資料保留在你的裝置和自有伺服器上。",
+  "Turning this off keeps existing data in Apple Health.": "關閉後，既有資料仍保留在 Apple 健康中。",
+  "Simulator Health store": "模擬器健康儲存",
+  "Could not sync Apple Health": "無法同步 Apple 健康",
+
   'Confirm': '確認',
   'Cancel': '取消',
   'Press back again to exit': '再按一次返回以退出',

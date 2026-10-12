@@ -1,5 +1,13 @@
 // Thai UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "สุขภาพของ Apple",
+  "Sync with Apple Health": "ซิงค์กับสุขภาพของ Apple",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "บันทึกการออกกำลังกาย พลังงาน และขนาดร่างกาย อ่านขนาดร่างกาย อัตราการเต้นหัวใจ และการฟื้นตัว ข้อมูลอยู่บนอุปกรณ์และเซิร์ฟเวอร์ของคุณเอง",
+  "Turning this off keeps existing data in Apple Health.": "เมื่อปิด ข้อมูลเดิมจะยังอยู่ในสุขภาพของ Apple",
+  "Simulator Health store": "พื้นที่เก็บข้อมูลสุขภาพของตัวจำลอง",
+  "Could not sync Apple Health": "ซิงค์กับสุขภาพของ Apple ไม่สำเร็จ",
+
   // --- generic ---
   'Confirm': 'ยืนยัน',
   'Cancel': 'ยกเลิก',

@@ -1,5 +1,13 @@
 // Bengali UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Apple স্বাস্থ্য",
+  "Sync with Apple Health": "Apple স্বাস্থ্যের সঙ্গে সিঙ্ক করুন",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "ওয়ার্কআউট, শক্তি ও শরীরের মাপ সংরক্ষণ করুন। মাপ, হৃদ্‌স্পন্দন ও পুনরুদ্ধারের তথ্য পড়ুন। তথ্য আপনার ডিভাইস ও নিজস্ব সার্ভারে থাকে।",
+  "Turning this off keeps existing data in Apple Health.": "বন্ধ করলে বর্তমান তথ্য Apple স্বাস্থ্যে থেকে যায়।",
+  "Simulator Health store": "সিমুলেটরের স্বাস্থ্য সংরক্ষণাগার",
+  "Could not sync Apple Health": "Apple স্বাস্থ্য সিঙ্ক করা যায়নি",
+
   'Confirm': 'নিশ্চিত করুন',
   'Cancel': 'বাতিল',
   'Press back again to exit': 'বের হতে আবার ব্যাক চাপুন',

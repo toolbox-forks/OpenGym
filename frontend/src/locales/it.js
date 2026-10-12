@@ -1,5 +1,13 @@
 // Italian UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Apple Salute",
+  "Sync with Apple Health": "Sincronizza con Apple Salute",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "Salva allenamenti, energia e misure corporee. Leggi misure, frequenza cardiaca e recupero. I dati restano sul dispositivo e sul tuo server.",
+  "Turning this off keeps existing data in Apple Health.": "Disattivando la sincronizzazione, i dati esistenti rimangono in Apple Salute.",
+  "Simulator Health store": "Archivio Salute del simulatore",
+  "Could not sync Apple Health": "Impossibile sincronizzare Apple Salute",
+
   'Confirm': 'Conferma',
   'Cancel': 'Annulla',
   'Press back again to exit': 'Premi di nuovo indietro per uscire',

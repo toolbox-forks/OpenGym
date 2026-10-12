@@ -1,5 +1,13 @@
 // Hindi UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Apple स्वास्थ्य",
+  "Sync with Apple Health": "Apple स्वास्थ्य से सिंक करें",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "वर्कआउट, ऊर्जा और शरीर के माप सहेजें। माप, हृदय गति और रिकवरी पढ़ें। डेटा आपके डिवाइस और आपके अपने सर्वर पर रहता है।",
+  "Turning this off keeps existing data in Apple Health.": "बंद करने पर मौजूदा डेटा Apple स्वास्थ्य में बना रहता है।",
+  "Simulator Health store": "सिम्युलेटर स्वास्थ्य स्टोर",
+  "Could not sync Apple Health": "Apple स्वास्थ्य सिंक नहीं हो सका",
+
   'Confirm': 'पुष्टि करें',
   'Cancel': 'रद्द करें',
   'Press back again to exit': 'बाहर निकलने के लिए फिर से बैक दबाएँ',

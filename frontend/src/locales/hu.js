@@ -1,5 +1,13 @@
 // Hungarian UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Apple Egészség",
+  "Sync with Apple Health": "Szinkronizálás az Apple Egészséggel",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "Edzések, energia és testméretek mentése. Testméretek, pulzus és regeneráció olvasása. Az adatok az eszközödön és saját szervereden maradnak.",
+  "Turning this off keeps existing data in Apple Health.": "A kikapcsolás megtartja a meglévő adatokat az Apple Egészségben.",
+  "Simulator Health store": "A szimulátor Egészség-tárolója",
+  "Could not sync Apple Health": "Nem sikerült szinkronizálni az Apple Egészséget",
+
   // --- generic ---
   'Confirm': 'Megerősítés',
   'Cancel': 'Mégse',

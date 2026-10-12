@@ -1,5 +1,13 @@
 // Arabic UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "صحّة Apple",
+  "Sync with Apple Health": "المزامنة مع صحّة Apple",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "احفظ التمارين والطاقة وقياسات الجسم. اقرأ القياسات ومعدل القلب والتعافي. تبقى البيانات على جهازك وخادمك الخاص.",
+  "Turning this off keeps existing data in Apple Health.": "عند إيقاف المزامنة تبقى البيانات الحالية في صحّة Apple.",
+  "Simulator Health store": "مخزن الصحّة في المحاكي",
+  "Could not sync Apple Health": "تعذّرت مزامنة صحّة Apple",
+
   'Confirm': 'تأكيد',
   'Cancel': 'إلغاء',
   'Press back again to exit': 'اضغط زر الرجوع مرة أخرى للخروج',

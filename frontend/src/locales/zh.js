@@ -1,5 +1,13 @@
 // Simplified Chinese UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Apple 健康",
+  "Sync with Apple Health": "与 Apple 健康同步",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "保存训练、能量和身体测量数据。读取身体测量、心率和恢复数据。数据保留在你的设备和自有服务器上。",
+  "Turning this off keeps existing data in Apple Health.": "关闭后，已有数据仍保留在 Apple 健康中。",
+  "Simulator Health store": "模拟器健康存储",
+  "Could not sync Apple Health": "无法同步 Apple 健康",
+
   'Confirm': '确认',
   'Cancel': '取消',
   'Press back again to exit': '再按一次返回退出',

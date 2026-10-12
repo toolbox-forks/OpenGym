@@ -70,3 +70,7 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 ## Phase 3: Apple Health bridge [OPEN 2026-10-12]
 - VERIFIED official HKWorkoutBuilder docs support iOS 12/watchOS 5 and waistCircumference supports iOS 11/watchOS 4; available at selected iOS 17/watchOS 10 floors. HKWorkoutSession documentation earlier confirmed iPhone support at iOS 17.
 - Start tests around mapping, write identifiers, units and duplicate writes. Keep Apple frameworks outside OpenGymKit. Preserve Android Health Connect behaviour.
+- WRITTEN HealthKit native plugin, explicit simulator mock, canonical mapping/decoded validation, versioned writes and atomic consent/UUID preferences. No real HealthKit sensor/write claim yet.
+- VERIFIED focused JS boundary/bridge/purpose tests → 29 passed; localization coverage check follows the Portuguese inheritance correction. Earlier 28-test run passed before the added corrupt-map guard.
+- VERIFIED initial native package run 38308636498/4496f8d0 check 115008686737 → 23 Swift tests executed, zero failures. The new UUID-alias test and native atomic storage changes require a fresh run.
+- WRITTEN simulator purpose/opt-in/relaunch UI acceptance test, source-preserving imports and all-language Settings card; full frontend run in progress. Do not close the phase until full suites and new native CI pass.

@@ -1,5 +1,13 @@
 // Russian UI strings. Keys are the English source strings (see lib/i18n.js).
 export default {
+  // Apple Health purpose and controls
+  "Apple Health": "Здоровье Apple",
+  "Sync with Apple Health": "Синхронизация со Здоровьем Apple",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "Сохраняйте тренировки, энергию и замеры тела. Читайте замеры, пульс и восстановление. Данные остаются на устройстве и вашем сервере.",
+  "Turning this off keeps existing data in Apple Health.": "После отключения существующие данные остаются в Здоровье Apple.",
+  "Simulator Health store": "Хранилище Здоровья симулятора",
+  "Could not sync Apple Health": "Не удалось синхронизировать Здоровье Apple",
+
   'Confirm': 'Подтвердить',
   'Cancel': 'Отмена',
   'Press back again to exit': 'Нажмите «Назад» ещё раз, чтобы выйти',

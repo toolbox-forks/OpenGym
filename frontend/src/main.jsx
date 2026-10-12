@@ -6,6 +6,7 @@ import { useStore } from './store/useStore.js'
 import { startMediaSync } from './lib/media-sync.js'
 import { startNativeKeyboard } from './lib/native-keyboard.js'
 import { startAppleShell } from './lib/apple-shell.js'
+import { startAppleHealth } from './lib/apple-health.js'
 import './index.css'
 
 // App.jsx restores per-route scroll itself; the browser's own attempt races it.
@@ -23,6 +24,7 @@ startMediaSync(useStore)
 // this keeps the focused field above it. Idle everywhere else.
 startNativeKeyboard()
 startAppleShell().catch(() => {})
+startAppleHealth(useStore).catch(() => {})
 
 // Not in the mobile build: the native shell already serves everything from disk.
 if (!MOBILE && 'serviceWorker' in navigator && location.protocol === 'https:') {

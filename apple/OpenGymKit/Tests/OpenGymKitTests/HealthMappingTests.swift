@@ -62,4 +62,11 @@ final class HealthMappingTests:XCTestCase {
         let rows=await store.measurements(since:0)
         XCTAssertEqual(rows.count,1);XCTAssertEqual(rows[0].value,81)
     }
+    func testWorkoutUUIDDeduplicatesLegacyIdAliases() async throws {
+        let store=try MockHealthRecordStore()
+        try await store.upsert(workout:workout())
+        let alias=try HealthWorkoutRecord(clientId:"another-id",uuid:uuid,title:"Same",start:1000,end:61000)
+        try await store.upsert(workout:alias)
+        let rows=await store.workouts();XCTAssertEqual(rows.count,1)
+    }
 }
