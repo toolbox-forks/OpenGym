@@ -48,7 +48,7 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 - VERIFIED PBX Debug/Release project configurations now propagate the simulator-only exclusion; physical arm64 is unaffected. Official Google ML Kit 7.0.0 podspec confirms the exclusion (ADR-007).
 - WRITTEN 6ea29ace is pushed; Apple run 38301101740 is queued for the consistent app/pod/test destination. That run subsequently passed all 6 native/simulator tests.
 
-## Phase 2: OpenGymKit [OPEN 2026-10-12]
+## Phase 2: OpenGymKit [CLOSED 2026-10-12]
 - Start with tests and shared fixtures. Mac CI is available for Swift package tests; do not reintroduce the oversized Swift Docker image on this Linux disk.
 - Native deployment minima and simulator-only ML Kit settings are documented in ADR-003/007. Run full JS suites and Swift fixture suite before closure.
 - WRITTEN lossless Codable state adapters, identity/envelope v1/schema, prototype migration, 1RM (all formulas/weighted), unit conversion, plate stack and warm-up math.
@@ -60,3 +60,13 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 - VERIFIED macOS package run 38305204425/4bb05567: 16 Swift tests executed, zero failures, covering all 1,133 shared vectors and contract/legacy-state tests. iPhone package-linked build validation is still running.
 - VERIFIED full frontend → 5,087 passed; MCP → 95 passed. API first run → 595 passed / 1 failed in the 150 ms cache TTL probe under concurrent frontend load; isolated cache suite → 2 passed. Full API rerun now runs alone at concurrency 1 (ADR-009); do not claim baseline green until it completes.
 - WRITTEN expanded corpus of 1,173 vectors and short-duration deload fix; new Swift validation required before closure.
+- VERIFIED full API rerun alone at concurrency 1 → all 596 passed, zero failures/skips; the cache TTL probe is preserved. Baseline restored: frontend 5,087 / API 596 / MCP 95.
+- VERIFIED expanded Swift package run 38306059601/6fbd39ea check 115000841459 → 16 tests executed, zero failures, all 1,173 golden vectors plus contract tests. iPhone package-linked build/test job still pending its result.
+- VERIFIED separate web build passed; focused updated corpus/contract tests → 19 passed.
+- VERIFIED final Apple run 38306059601/6fbd39ea → OpenGymKit 16 tests, zero failures; iPhone Release build passed and 6 native/simulator tests executed/passed, zero failed/skipped. Commands: `bash scripts/apple/verify-kit.sh`, `bash scripts/apple/verify-iphone.sh`; check-run annotations 115000841459/115000841822.
+- Phase 2 exit complete: lossless models/envelope/identity, shared calculations and independently executed golden fixtures; baseline frontend 5,087 / API 596 / MCP 95 and web build passed.
+- Next: Phase 3 Apple Health mappings, idempotent store abstraction/mock and native plugin/UI; actual Health authorization/sensors remain device checks in B-04.
+
+## Phase 3: Apple Health bridge [OPEN 2026-10-12]
+- VERIFIED official HKWorkoutBuilder docs support iOS 12/watchOS 5 and waistCircumference supports iOS 11/watchOS 4; available at selected iOS 17/watchOS 10 floors. HKWorkoutSession documentation earlier confirmed iPhone support at iOS 17.
+- Start tests around mapping, write identifiers, units and duplicate writes. Keep Apple frameworks outside OpenGymKit. Preserve Android Health Connect behaviour.
