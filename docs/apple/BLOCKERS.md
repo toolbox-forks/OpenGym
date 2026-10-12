@@ -25,7 +25,7 @@ Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is i
 ### B-04 — Physical iPhone and Watch acceptance
 - Needed from owner: paired iPhone/Apple Watch and under-30-minute DEVICE_TEST_CHECKLIST run once integration is complete.
 - Exact steps: install both schemes from Xcode with owner signing, test a workout with phone absent, rest haptics/Always-On, live HR/energy, relaunch/resume, reconnect delivery, duplicate-free Health history, Action button and Double Tap where supported; record OS/hardware/commit and outcomes.
-- Unblocks: actual Health writes, live sensors, background lifetime, WC physical transport and hardware controls. Checklist will be written in Phase 10; it is not yet a completed artifact.
+- Unblocks: actual Health writes, live sensors, background lifetime, WC physical transport and hardware controls. DEVICE_TEST_CHECKLIST.md is now a WRITTEN draft; only Phase 1 shell checks apply to current code. Final checklist is validated/refined in Phase 10.
 
 ### B-05 — Oura OAuth configuration (optional Tier 2)
 - Needed from owner: Oura OAuth2 application registration and redirect, supplied securely to the owner's exchange service / Keychain. Do not put a client secret in a distributed app binary.
@@ -50,3 +50,9 @@ Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is i
 - Exact steps: environment settings → review/add that exact artifact hostname → Save and publish if prompted. Alternatively fork Actions → Apple run 38297653898 → download iphone-evidence artifact; attach its iphone-release.log, iphone-tests.log and xcresult. For local evidence follow XCODE_SETUP.md on the owner Mac and attach the same output.
 - Unblocks: inspecting actual compiler/test outcomes and confirming nonzero native tests. CI is still running; no successful Apple build is claimed.
 - Remaining work behind this gate: close Phase 1 only after diagnosing native outcomes; then Phase 2 OpenGymKit, Phase 3 Health bridge, Phase 4 Watch MVP, Phase 5 sync, Phase 6 parity, Phase 7 progress, Phase 8 integrations, Phase 9 Oura and Phase 10 hardening/PR report in order. PLAN/PARITY specify the exact work and test gates; none is silently deferred or claimed implemented.
+
+### B-09 — Optional Linux Swift toolchain verification
+- VERIFIED the Swift Docker runtime reported 6.2.4, but a later container launch exhausted disk; the owned image/downloads were removed. Do not retry that image in this machine.
+- A smaller official Linux toolchain archive is available from download.swift.org, but official release verification keys at www.swift.org/keys/all-keys.asc return proxy HTTP 403. No unsigned toolchain was installed, and the failed key download was not used.
+- Needed from owner only if Linux Swift tests are required: save/apply the draft's swift.org and www.swift.org additions. Then verify the official detached signature before installation and check decompressed size against remaining space.
+- Alternative: run OpenGymKit tests in the macOS oracle once Phase 2 opens. This optional toolchain does not block the existing web/Android workflow or Phase 1's macOS build.

@@ -15,6 +15,7 @@ report_failure() {
 trap report_failure EXIT
 phone_udid=$(python3 scripts/apple/select-simulator.py)
 xcodebuild -version
+echo "::notice::Apple oracle host architecture: $(uname -m); $(xcodebuild -version | tr '\n' ' ')."
 xcrun simctl boot "$phone_udid" 2>/dev/null || xcrun simctl list devices booted | grep -F "$phone_udid"
 xcrun simctl bootstatus "$phone_udid" -b
 xcodebuild -workspace frontend/ios/App/App.xcworkspace -scheme OpenGym \

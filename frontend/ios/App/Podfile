@@ -35,6 +35,11 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
+      # Google ML Kit 7.x's pod xcconfig excludes arm64 simulator slices for the app.
+      # Apply that simulator-only setting consistently to dependencies too: otherwise
+      # Debug builds produce arm64 Capacitor.swiftmodule while the host compiles x86_64.
+      # Device builds retain their normal arm64 architecture.
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
     end
   end
 end

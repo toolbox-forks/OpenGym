@@ -31,4 +31,10 @@
 ### ADR-006 — Cloud-only build prerequisites (2026-10-12)
 - Node/API/nginx images do not inherit the cloud proxy's configured root CA. Local Dockerfile overlays outside the checkout copy the platform's public trust bundle before TLS downloads; package signatures and TLS verification remain enabled. Android Gradle uses its supported Java proxy properties and a copy of the system truststore augmented with the platform CA certificates.
 - Cloud checkouts have 0600/0700 source permissions. The local nginx image overlay grants its public template/static tree the read/search modes a normal Git checkout has. This corrects setup permissions, not application code; canonical Dockerfiles remain unchanged.
-- Java 21 in the base machine is a JRE without javac. Temurin JDK 21.0.12.1+1 is installed outside the repository after checking its official release SHA-256. Swift 6.2.4 is available in the verified Docker runtime image for pure Linux package tests.
+- Java 21 in the base machine is a JRE without javac. Temurin JDK 21.0.12.1+1 is installed outside the repository after checking its official release SHA-256. Swift 6.2.4 was verified in a Docker runtime, but a subsequent container launch exhausted the 32 GiB disk. The owned image was removed; do not pull/run that image again here. A smaller signed Swift toolchain or macOS CI is needed for Phase 2 tests.
+
+### ADR-007 — Consistent simulator architecture for ML Kit (2026-10-12)
+- VERIFIED Apple run 38299276900: Release simulator build passed; Debug tests failed because AppDelegate's Capacitor import requested x86_64, but Capacitor.framework had only an arm64 simulator Swift module.
+- Existing Google ML Kit 7.x transitively configures arm64 simulator exclusion for the app. The CocoaPods post-install now applies the same simulator-only exclusion to every pod configuration, avoiding mismatched Debug slices. Physical iPhone arm64 remains enabled.
+- Alternatives weighed: overriding all SDK architectures globally (risks real-device builds); removing the existing scanner (breaks existing functionality); replacing its dependency (unneeded during this phase).
+- Consequence: rerun both simulator Release and native/UI tests before closing Phase 1. Log runner architecture/Xcode version through an Actions notice as well as normal stdout. Do not claim simulator camera scans validate real-device scanning.
