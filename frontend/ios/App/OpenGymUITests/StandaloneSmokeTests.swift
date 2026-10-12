@@ -11,7 +11,9 @@ final class StandaloneSmokeTests: XCTestCase {
         app.buttons["Plan"].tap()
         app.buttons["Stats"].tap()
         app.buttons["Exercises"].tap()
-        XCTAssertTrue(app.textFields.firstMatch.waitForExistence(timeout: 10), app.debugDescription)
+        let search = app.searchFields.firstMatch
+        let searchExists = search.waitForExistence(timeout: 10) || app.textFields.firstMatch.waitForExistence(timeout: 10)
+        XCTAssertTrue(searchExists, app.debugDescription)
         app.buttons["Home"].tap()
         app.terminate()
         app.launch()

@@ -37,7 +37,8 @@ jobs:
           echo "sdk=$(xcodebuild -version | shasum -a 256 | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
           echo "arch=$(uname -m)" >> "$GITHUB_OUTPUT"
       - name: Restore native build data
-        uses: actions/cache@v6.1.0
+        id: native-cache
+        uses: actions/cache/restore@v6.1.0
         with:
           path: |
             frontend/ios/App/Pods
@@ -70,6 +71,14 @@ jobs:
             frontend/ios/App/output/
             frontend/ios/App/Podfile.lock
           if-no-files-found: warn
+      - name: Save reusable native build data
+        if: always() && steps.native-cache.outcome == 'success' && steps.native-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6.1.0
+        with:
+          path: |
+            frontend/ios/App/Pods
+            frontend/ios/App/DerivedData
+          key: ${{ steps.native-cache.outputs.cache-primary-key }}
 
   kit:
     name: OpenGymKit Swift and shared fixtures

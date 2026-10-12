@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { appleHealthRecords, planAppleHealth, mergeHealthMeasurements } from './apple-health-records.js'
+import { convertStateUnit } from './units.js'
 const uuid = 'bd0c1f64-9e48-4a29-a81e-4dcfcf79e218'
 const time = new Date('2026-10-12T12:00:00').getTime()
 const workout = { id: 'legacy-short-id', name: 'Strength', start: time, end: time + 60000, energyKcal: 125, entries: [] }
@@ -82,4 +83,24 @@ describe('Apple Health boundary', () => {
     const S = {}
     expect(mergeHealthMeasurements(S, [{ ...row, value: NaN }, { ...row, time: 0 }, { ...row, kind: 'chest' }, { ...row, kind: 'bodyFat', value: 2 }])).toBe(S)
   })
+})
+
+it('writes a manual correction on the imported rounding boundary', () => {
+  const merged = mergeHealthMeasurements({ unit: 'kg' }, [{ ...row, value: 80.05 }])
+  expect(merged.bodyweight[0].w).toBe(80.1)
+  merged.bodyweight[0].w = 80
+  expect(appleHealthRecords(merged).measurements).toHaveLength(1)
+  expect(appleHealthRecords(merged).measurements[0].value).toBe(80)
+})
+it('does not echo an imported reading when the profile changes units', () => {
+  const merged = mergeHealthMeasurements({ unit: 'kg' }, [{ ...row, value: 80.049 }])
+  const lb = convertStateUnit(merged, 'lb')
+  expect(appleHealthRecords(lb).measurements).toEqual([])
+  expect(appleHealthRecords(convertStateUnit(lb, 'kg')).measurements).toEqual([])
+})
+it('keeps five years of daily imported readings out of the write batch', () => {
+  const rows = Array.from({ length: 2000 }, (_, i) => ({ ...row, sampleId: String(i), time: time - i * 86400000, value: 80 + (i % 20) / 20 }))
+  const merged = mergeHealthMeasurements({ unit: 'kg' }, rows)
+  expect(merged.bodyweight).toHaveLength(2000)
+  expect(appleHealthRecords(merged).measurements).toEqual([])
 })

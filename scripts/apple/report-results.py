@@ -21,9 +21,14 @@ if exit_code:
         lines = path.read_text(errors='replace').splitlines()
         print(f'Last lines of {name}:')
         print('\n'.join(lines[-30:]))
-        for line in lines:
-            if re.search(r'error:|XCTAssert.*failed|Test Case .*failed|Testing failed:', line, re.I):
-                found.append(f'{name}: {line[:2000]}')
+        for index, line in enumerate(lines):
+            if re.search(r'error:|XCTAssert.*failed|Test Case .*\bfailed\s*\(|Testing failed:', line, re.I):
+                context = [line]
+                if 'XCTAssert' in line:
+                    for following in lines[index + 1:index + 151]:
+                        if following.startswith('Test Case ') or following.startswith('Test Suite '): break
+                        context.append(following)
+                found.append(f'{name}: ' + '\n'.join(context)[:16000])
     for failure in found[-12:]:
         annotation('error', failure)
     if not found:

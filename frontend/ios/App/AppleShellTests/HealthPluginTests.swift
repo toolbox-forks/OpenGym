@@ -49,7 +49,7 @@ final class HealthPluginTests: XCTestCase {
     private enum CallError: Error { case rejected(String) }
     private func invoke(_ plugin: HealthPlugin, method: String, options: [String: Any]) async throws -> [String: Any] {
         try await withCheckedThrowingContinuation { continuation in
-            guard let call = CAPPluginCall(callbackId: UUID().uuidString, methodName: method, options: options,
+            guard let call = CAPPluginCall(callbackId: UUID().uuidString, methodName: method, options: JSTypes.coerceDictionaryToJSObject(options as NSDictionary) ?? [:],
                 success: { result, _ in continuation.resume(returning: result?.data ?? [:]) },
                 error: { error in continuation.resume(throwing: CallError.rejected(error?.code ?? "unknown")) }) else {
                 continuation.resume(throwing: CallError.rejected("call")); return
@@ -71,9 +71,11 @@ final class HealthPluginTests: XCTestCase {
         _ = try await invoke(plugin, method: "write", options: options)
         _ = try await invoke(plugin, method: "write", options: options)
         let saved = await store.workouts()
-        XCTAssertEqual(saved.count, 1); XCTAssertEqual(saved[0].energyKcal, 120)
-        XCTAssertEqual(saved[0].uuid, workoutOptions["uuid"] as? String)
-        XCTAssertEqual(saved[0].end - saved[0].start, 60000)
+        XCTAssertEqual(saved.count, 1)
+        let workout = try XCTUnwrap(saved.first)
+        XCTAssertEqual(workout.energyKcal, 120)
+        XCTAssertEqual(workout.uuid, workoutOptions["uuid"] as? String)
+        XCTAssertEqual(workout.end - workout.start, 60000)
         let read = try await invoke(plugin, method: "read", options: ["since": 0])
         XCTAssertEqual(read["mode"] as? String, "mock")
         let measurements = try XCTUnwrap(read["measurements"] as? [[String: Any]])

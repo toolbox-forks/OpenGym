@@ -94,6 +94,11 @@ export function convertStateUnit(S, to) {
   }
   const out = { ...S, unit: to }
   if (Array.isArray(S.bodyweight)) out.bodyweight = S.bodyweight.map(b => ({ ...b, w: bw(b.w) }))
+  // Keep an imported Health reading's displayed value aligned with the same conversion as
+  // the log, while its original canonical quantity/source/time remain unchanged.
+  if (Array.isArray(S.appleHealthMeasurements)) out.appleHealthMeasurements = S.appleHealthMeasurements.map(r =>
+    r.kind === 'bodyMass' && r.appUnit === from && Number.isFinite(r.appValue)
+      ? { ...r, appUnit: to, appValue: bw(r.appValue) } : r)
   if (S.targetW != null) out.targetW = bw(S.targetW)
   if (S.exWeights) out.exWeights = Object.fromEntries(Object.entries(S.exWeights).map(([k, v]) => [k, v && typeof v === 'object' ? { ...v, w: c(v.w) } : c(v)]))
   if (S.barWeights) out.barWeights = convBarWeights(S.barWeights, from, to)

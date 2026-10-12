@@ -197,6 +197,10 @@ final class HealthPlugin: CAPPlugin, CAPBridgedPlugin {
         // Decode the complete batch before writing any samples, so malformed JS cannot partly import.
         do {
             let decoder = JSONDecoder()
+            guard (call.options["workouts"] == nil || call.getArray("workouts") != nil),
+                  (call.options["measurements"] == nil || call.getArray("measurements") != nil) else {
+                call.reject("Health records must be arrays", "mapping"); return
+            }
             let workoutObjects = call.getArray("workouts") ?? [], measurementObjects = call.getArray("measurements") ?? []
             guard JSONSerialization.isValidJSONObject(workoutObjects), JSONSerialization.isValidJSONObject(measurementObjects) else {
                 call.reject("Invalid Health records", "mapping"); return

@@ -4,6 +4,10 @@ import { isoOf } from './format.js'
 
 const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const positive = n => Number.isFinite(n) && n > 0
+const massFactor = unit => unit === 'lb' ? 2.2046226218 : 1
+const importedDisplay = (r, unit) => r.kind === 'bodyMass'
+  ? Math.round(r.value * massFactor(unit) * 10) / 10
+  : Math.round(r.value * 1000) / 10
 export function appleHealthRecords(S, identities = {}, makeUUID = () => crypto.randomUUID()) {
   const ids = { ...identities }, workouts = [], measurements = []
   for (const w of S.workouts || []) {
@@ -16,22 +20,30 @@ export function appleHealthRecords(S, identities = {}, makeUUID = () => crypto.r
     workouts.push({ clientId: 'opengym-w-' + key, uuid: ids[key], title: String(w.name || ''),
       start: w.start, end: w.end, activity: w.healthActivity || sessionType(w), energyKcal: energy })
   }
-  const imported = S.appleHealthMeasurements || []
-  const take = row => {
+  const imported = new Map(), unit = S.unit === 'lb' ? 'lb' : 'kg'
+  for (const r of S.appleHealthMeasurements || []) {
+    if (!positive(r.value) || !positive(r.time)) continue
+    const day = r.appDay || isoOf(new Date(r.time)), key = day + '|' + r.kind
+    const displayed = r.kind === 'bodyMass' && r.appUnit === unit && positive(r.appValue) ? r.appValue : importedDisplay(r, unit)
+    const canonical = r.kind === 'bodyMass' ? Math.round(displayed / massFactor(unit) * 1000) / 1000 : displayed / 100
+    if (!imported.has(key)) imported.set(key, new Set())
+    imported.get(key).add(canonical)
+  }
+  const take = (row, day) => {
     if (!positive(row.value) || !positive(row.time) || row.kind === 'bodyFat' && row.value > 1) return
     // An imported sample is never echoed back into Health as a new openGym sample.
-    if (imported.some(r => r.kind === row.kind && isoOf(new Date(r.time)) === isoOf(new Date(row.time)) && Math.abs(r.value - row.value) < (row.kind === 'bodyMass' ? 0.051 / (S.unit === 'lb' ? 2.2046226218 : 1) : 0.00051))) return
+    if (imported.get(day + '|' + row.kind)?.has(row.value)) return
     measurements.push(row)
   }
   for (const b of S.bodyweight || []) {
     const r = weightRecord(b, S.unit)
-    if (r) take({ clientId: r.id, kind: 'bodyMass', value: r.kg, time: r.time, source: 'openGym' })
+    if (r) take({ clientId: r.id, kind: 'bodyMass', value: r.kg, time: r.time, source: 'openGym' }, b.d)
   }
   for (const m of S.measurements || []) {
     if (!positive(m.t)) continue
     for (const kind of ['bodyFat', 'waist']) {
       if (!positive(m[kind])) continue
-      take({ clientId: 'opengym-' + kind + '-' + m.d, kind, value: m[kind] / 100, time: m.t, source: 'openGym' })
+      take({ clientId: 'opengym-' + kind + '-' + m.d, kind, value: m[kind] / 100, time: m.t, source: 'openGym' }, m.d)
     }
   }
   return { workouts, measurements, identities: ids }
@@ -63,17 +75,16 @@ export function mergeHealthMeasurements(S, rows, ownIds = new Set()) {
     if (!['bodyMass', 'bodyFat', 'waist'].includes(r.kind) || !positive(r.value) || !positive(r.time) || r.kind === 'bodyFat' && r.value > 1 || ownIds.has(r.clientId)) continue
     const key = String(r.source || '') + '|' + (r.sampleId || r.time) + '|' + r.kind
     if (sources.has(key)) continue
-    sources.set(key, { ...r }); changed = true
     const d = isoOf(new Date(r.time))
+    sources.set(key, { ...r, appDay: d, appUnit: S.unit === 'lb' ? 'lb' : 'kg', appValue: importedDisplay(r, S.unit) }); changed = true
     if (r.kind === 'bodyMass') {
       const old = body.get(d)
       if (old && old.t >= r.time) continue
-      const w = r.value * (S.unit === 'lb' ? 2.2046226218 : 1)
-      body.set(d, { ...old, d, t: r.time, w: Math.round(w * 10) / 10 })
+      body.set(d, { ...old, d, t: r.time, w: importedDisplay(r, S.unit) })
     } else {
       const old = measures.get(d)
       if (old && old[r.kind] != null && old.t >= r.time) continue
-      measures.set(d, { ...old, d, t: Math.max(old?.t || 0, r.time), [r.kind]: Math.round(r.value * 1000) / 10 })
+      measures.set(d, { ...old, d, t: Math.max(old?.t || 0, r.time), [r.kind]: importedDisplay(r, S.unit) })
     }
   }
   return changed ? { ...S, bodyweight: [...body.values()].sort((a, b) => a.d.localeCompare(b.d)),
