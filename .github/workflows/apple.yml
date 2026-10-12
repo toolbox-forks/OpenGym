@@ -28,10 +28,23 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
       - name: Inspect Xcode and SDKs
+        id: apple-host
         run: |
           xcodebuild -version
           xcodebuild -showsdks
           xcrun simctl list runtimes
+          df -h .
+          echo "sdk=$(xcodebuild -version | shasum -a 256 | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
+          echo "arch=$(uname -m)" >> "$GITHUB_OUTPUT"
+      - name: Restore native build data
+        uses: actions/cache@v6.1.0
+        with:
+          path: |
+            frontend/ios/App/Pods
+            frontend/ios/App/DerivedData
+          key: apple-${{ steps.apple-host.outputs.arch }}-${{ steps.apple-host.outputs.sdk }}-${{ hashFiles('frontend/package-lock.json', 'frontend/ios/App/Podfile', 'Config/*.xcconfig') }}-${{ github.sha }}
+          restore-keys: |
+            apple-${{ steps.apple-host.outputs.arch }}-${{ steps.apple-host.outputs.sdk }}-${{ hashFiles('frontend/package-lock.json', 'frontend/ios/App/Podfile', 'Config/*.xcconfig') }}-
       - name: Install locked frontend dependencies
         run: npm ci
         working-directory: frontend
