@@ -47,7 +47,7 @@ final class WatchModel: ObservableObject {
             health = try WatchHealth(folder: folder)
             health?.onUpdate = { [weak self] value in self?.received(value) }
             if let active {
-                Task { do { try await health?.start(active, recovering: true) } catch { error = t("Unable to save") } }
+                Task { do { try await health?.start(active, recovering: true) } catch { self.error = t("Unable to save") } }
             }
             ticker = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                 Task { @MainActor in self?.tick() }
@@ -71,7 +71,7 @@ final class WatchModel: ObservableObject {
         purpose = false
         Task {
             do { try await health?.authorize(); didAskHealth = true; begin(requestedRoutine) }
-            catch { error = t("Unable to save"); didAskHealth = true; begin(requestedRoutine) }
+            catch { self.error = t("Unable to save"); didAskHealth = true; begin(requestedRoutine) }
         }
     }
     func localOnly() { purpose = false; didAskHealth = true; begin(requestedRoutine, healthEnabled: false) }
@@ -80,7 +80,7 @@ final class WatchModel: ObservableObject {
         guard mutate({ try $0.start(routineId: routine, now: time) }) else { return }
         savedWorkout = nil
         if let active, healthEnabled {
-            Task { do { try await health?.start(active) } catch { vitals.unavailable = true; error = t("Unable to save") } }
+            Task { do { try await health?.start(active) } catch { vitals.unavailable = true; self.error = t("Unable to save") } }
         }
     }
     func confirm(expectedUUID: String) {
@@ -122,7 +122,7 @@ final class WatchModel: ObservableObject {
             let end = now
             var savedHealth = false
             do { savedHealth = try await health?.finish(active, end: end) ?? false }
-            catch { error = t("Unable to save") }
+            catch { self.error = t("Unable to save") }
             do {
                 guard let journal else { throw WatchSessionError.corruptStore }
                 var done: JSONValue?
