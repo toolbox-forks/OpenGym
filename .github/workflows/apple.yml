@@ -99,3 +99,31 @@ jobs:
         with:
           name: kit-evidence-${{ github.sha }}
           path: frontend/ios/App/output/kit-tests.log
+
+  watch:
+    name: Watch standalone Release and UI tests
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Verify bundled catalogue and locale inputs
+        run: node scripts/apple/generate-watch-assets.mjs --check
+      - name: Inspect Watch runtime
+        run: |
+          xcodebuild -version
+          xcodebuild -showsdks
+          xcrun simctl list runtimes
+          df -h .
+          if ! xcrun simctl list runtimes | grep -q watchOS; then xcodebuild -downloadPlatform watchOS; fi
+      - name: Standalone Watch Release and UI gate
+        run: bash scripts/apple/verify-watch.sh
+      - name: Retain Watch evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: watch-evidence-${{ github.sha }}
+          path: frontend/ios/App/output/
+          if-no-files-found: warn

@@ -9,11 +9,13 @@
 /* Begin PBXContainerItemProxy section */
 		AC000000000000000000000D = {isa = PBXContainerItemProxy; containerPortal = 504EC2FC1FED79650016851F; proxyType = 1; remoteGlobalIDString = 504EC3031FED79650016851F; remoteInfo = App; };
 		AD000000000000000000000D = {isa = PBXContainerItemProxy; containerPortal = 504EC2FC1FED79650016851F; proxyType = 1; remoteGlobalIDString = 504EC3031FED79650016851F; remoteInfo = App; };
+		BA0000000000000000000048 = {isa = PBXContainerItemProxy; containerPortal = 504EC2FC1FED79650016851F; proxyType = 1; remoteGlobalIDString = BA0000000000000000000001; remoteInfo = "OpenGym Watch App"; };
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXTargetDependency section */
 		AC000000000000000000000C = {isa = PBXTargetDependency; target = 504EC3031FED79650016851F; targetProxy = AC000000000000000000000D; };
 		AD000000000000000000000C = {isa = PBXTargetDependency; target = 504EC3031FED79650016851F; targetProxy = AD000000000000000000000D; };
+		BA0000000000000000000049 = {isa = PBXTargetDependency; target = BA0000000000000000000001; targetProxy = BA0000000000000000000048; };
 /* End PBXTargetDependency section */
 
 /* Begin PBXBuildFile section */
@@ -36,7 +38,20 @@
 		AE0000000000000000000003 /* OpenGymKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE0000000000000000000002; };
 		AF0000000000000000000002 = {isa = PBXBuildFile; fileRef = AF0000000000000000000001; };
 		AF0000000000000000000004 = {isa = PBXBuildFile; fileRef = AF0000000000000000000003; };
+		BA000000000000000000001E = {isa = PBXBuildFile; fileRef = BA000000000000000000000A; };
+		BA000000000000000000001F = {isa = PBXBuildFile; fileRef = BA000000000000000000000B; };
+		BA0000000000000000000020 = {isa = PBXBuildFile; fileRef = BA000000000000000000000C; };
+		BA0000000000000000000021 = {isa = PBXBuildFile; fileRef = BA000000000000000000000D; };
+		BA0000000000000000000022 = {isa = PBXBuildFile; fileRef = BA000000000000000000000E; };
+		BA0000000000000000000028 = {isa = PBXBuildFile; fileRef = BA0000000000000000000014; };
+		BA0000000000000000000029 = {isa = PBXBuildFile; productRef = AE0000000000000000000002; };
+		BA000000000000000000002A = {isa = PBXBuildFile; fileRef = BA0000000000000000000015; settings = {ATTRIBUTES = (RemoveHeadersOnCopy,); }; };
+		BA000000000000000000002B = {isa = PBXBuildFile; fileRef = BA0000000000000000000017; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+        BA000000000000000000004A = {isa = PBXCopyFilesBuildPhase; buildActionMask = 2147483647; dstPath = "$(CONTENTS_FOLDER_PATH)/Watch"; dstSubfolderSpec = 16; files = (BA000000000000000000002A,); name = "Embed Watch Content"; runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
@@ -65,6 +80,16 @@
 		AD0000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = OpenGymUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF0000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPlugin.swift; sourceTree = "<group>"; };
 		AF0000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPluginTests.swift; sourceTree = "<group>"; };
+		BA000000000000000000000A = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGymWatchApp.swift; sourceTree = "<group>"; };
+		BA000000000000000000000B = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchModel.swift; sourceTree = "<group>"; };
+		BA000000000000000000000C = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchResources.swift; sourceTree = "<group>"; };
+		BA000000000000000000000D = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHealth.swift; sourceTree = "<group>"; };
+		BA000000000000000000000E = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViews.swift; sourceTree = "<group>"; };
+		BA0000000000000000000014 = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
+		BA0000000000000000000015 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OpenGym Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA0000000000000000000016 = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Apple.xcconfig; path = ../../../Config/Apple.xcconfig; sourceTree = SOURCE_ROOT; };
+		BA0000000000000000000017 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStandaloneTests.swift; sourceTree = "<group>"; };
+		BA0000000000000000000018 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenGymWatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +104,8 @@
 		};
 		AC0000000000000000000008 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		AD0000000000000000000008 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		BA0000000000000000000036 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (BA0000000000000000000029,); runOnlyForDeploymentPostprocessing = 0; };
+		BA0000000000000000000037 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,6 +125,7 @@
 				AC0000000000000000000002 /* AppleShellTests */,
 				AD0000000000000000000002 /* OpenGymUITests */,
 				504EC3061FED79650016851F /* App */,
+                BA0000000000000000000002, BA0000000000000000000003,
 				504EC3051FED79650016851F /* Products */,
 				7F8756D8B27F46E3366F6CEA /* Pods */,
 				27E2DDA53C4D2A4D1A88CE4A /* Frameworks */,
@@ -110,6 +138,7 @@
 				AC0000000000000000000005 /* AppleShellTests.xctest */,
 				AD0000000000000000000005 /* OpenGymUITests.xctest */,
 				504EC3041FED79650016851F /* App.app */,
+                BA0000000000000000000015, BA0000000000000000000018,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,6 +176,8 @@
 		};
 		AC0000000000000000000002 = {isa = PBXGroup; children = (AC0000000000000000000003, AF0000000000000000000003,); path = AppleShellTests; sourceTree = "<group>"; };
 		AD0000000000000000000002 = {isa = PBXGroup; children = (AD0000000000000000000003,); path = OpenGymUITests; sourceTree = "<group>"; };
+		BA0000000000000000000002 = {isa = PBXGroup; children = (BA000000000000000000000A, BA000000000000000000000B, BA000000000000000000000C, BA000000000000000000000D, BA000000000000000000000E, BA0000000000000000000014, BA0000000000000000000016,); name = "OpenGym Watch App"; path = ../../../apple/WatchApp; sourceTree = "<group>"; };
+		BA0000000000000000000003 = {isa = PBXGroup; children = (BA0000000000000000000017,); name = OpenGymWatchUITests; path = ../../../apple/WatchAppUITests; sourceTree = "<group>"; };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,6 +185,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 504EC3161FED79650016851F /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
+                BA000000000000000000004A,
 				6634F4EFEBD30273BCE97C65 /* [CP] Check Pods Manifest.lock */,
 				504EC3001FED79650016851F /* Sources */,
 				504EC3011FED79650016851F /* Frameworks */,
@@ -163,6 +195,7 @@
 			buildRules = (
 			);
 			dependencies = (
+                BA0000000000000000000049,
 			);
 			name = App;
 			packageProductDependencies = (AE0000000000000000000002,);
@@ -172,6 +205,8 @@
 		};
 		AC0000000000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = AC0000000000000000000009; buildPhases = (AC0000000000000000000006, AC0000000000000000000008, AC0000000000000000000007,); buildRules = (); dependencies = (AC000000000000000000000C,); name = AppleShellTests; productName = AppleShellTests; productReference = AC0000000000000000000005; productType = "com.apple.product-type.bundle.unit-test"; };
 		AD0000000000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = AD0000000000000000000009; buildPhases = (AD0000000000000000000006, AD0000000000000000000008, AD0000000000000000000007,); buildRules = (); dependencies = (AD000000000000000000000C,); name = OpenGymUITests; productName = OpenGymUITests; productReference = AD0000000000000000000005; productType = "com.apple.product-type.bundle.ui-testing"; };
+		BA0000000000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = BA000000000000000000003C; buildPhases = (BA0000000000000000000032, BA0000000000000000000036, BA0000000000000000000034,); buildRules = (); dependencies = (); name = "OpenGym Watch App"; packageProductDependencies = (AE0000000000000000000002,); productName = "OpenGym Watch App"; productReference = BA0000000000000000000015; productType = "com.apple.product-type.application"; };
+		BA0000000000000000000004 = {isa = PBXNativeTarget; buildConfigurationList = BA000000000000000000003D; buildPhases = (BA0000000000000000000033, BA0000000000000000000037, BA0000000000000000000035,); buildRules = (); dependencies = (BA0000000000000000000049,); name = OpenGymWatchUITests; productName = OpenGymWatchUITests; productReference = BA0000000000000000000018; productType = "com.apple.product-type.bundle.ui-testing"; };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -207,6 +242,7 @@
 				AD0000000000000000000001 /* OpenGymUITests */,
 				AC0000000000000000000001 /* AppleShellTests */,
 				504EC3031FED79650016851F /* App */,
+                BA0000000000000000000001, BA0000000000000000000004,
 			);
 		};
 /* End PBXProject section */
@@ -227,6 +263,8 @@
 		};
 		AC0000000000000000000007 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 		AD0000000000000000000007 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		BA0000000000000000000034 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (BA0000000000000000000028,); runOnlyForDeploymentPostprocessing = 0; };
+		BA0000000000000000000035 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -283,6 +321,8 @@
 		};
 		AC0000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AC0000000000000000000004, AF0000000000000000000004,); runOnlyForDeploymentPostprocessing = 0; };
 		AD0000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AD0000000000000000000004,); runOnlyForDeploymentPostprocessing = 0; };
+		BA0000000000000000000032 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (BA000000000000000000001E, BA000000000000000000001F, BA0000000000000000000020, BA0000000000000000000021, BA0000000000000000000022,); runOnlyForDeploymentPostprocessing = 0; };
+		BA0000000000000000000033 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (BA000000000000000000002B,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -459,6 +499,10 @@
 		AC000000000000000000000B = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; PRODUCT_BUNDLE_IDENTIFIER = "com.example.opengym.AppleShellTests"; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; BUNDLE_LOADER = "$(TEST_HOST)"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";}; name = Release; };
 		AD000000000000000000000A = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; PRODUCT_BUNDLE_IDENTIFIER = "com.example.opengym.OpenGymUITests"; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; TEST_TARGET_NAME = App;}; name = Debug; };
 		AD000000000000000000000B = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; PRODUCT_BUNDLE_IDENTIFIER = "com.example.opengym.OpenGymUITests"; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; TEST_TARGET_NAME = App;}; name = Release; };
+		BA000000000000000000003E = {isa = XCBuildConfiguration; baseConfigurationReference = BA0000000000000000000016; buildSettings = {SDKROOT = watchos; WATCHOS_DEPLOYMENT_TARGET = 10.0; IPHONEOS_DEPLOYMENT_TARGET = ""; SUPPORTED_PLATFORMS = "watchos watchsimulator"; TARGETED_DEVICE_FAMILY = 4; SWIFT_VERSION = 5.0; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; INFOPLIST_FILE = ../../../apple/WatchApp/Info.plist; CODE_SIGN_ENTITLEMENTS = ../../../apple/WatchApp/Watch.entitlements; PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).watchapp"; PRODUCT_NAME = "$(TARGET_NAME)"; PRODUCT_MODULE_NAME = OpenGymWatch; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; }; name = Debug; };
+		BA000000000000000000003F = {isa = XCBuildConfiguration; baseConfigurationReference = BA0000000000000000000016; buildSettings = {SDKROOT = watchos; WATCHOS_DEPLOYMENT_TARGET = 10.0; IPHONEOS_DEPLOYMENT_TARGET = ""; SUPPORTED_PLATFORMS = "watchos watchsimulator"; TARGETED_DEVICE_FAMILY = 4; SWIFT_VERSION = 5.0; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0; SWIFT_ACTIVE_COMPILATION_CONDITIONS = ""; INFOPLIST_FILE = ../../../apple/WatchApp/Info.plist; CODE_SIGN_ENTITLEMENTS = ../../../apple/WatchApp/Watch.entitlements; PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).watchapp"; PRODUCT_NAME = "$(TARGET_NAME)"; PRODUCT_MODULE_NAME = OpenGymWatch; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; }; name = Release; };
+		BA0000000000000000000040 = {isa = XCBuildConfiguration; baseConfigurationReference = BA0000000000000000000016; buildSettings = {SDKROOT = watchos; WATCHOS_DEPLOYMENT_TARGET = 10.0; IPHONEOS_DEPLOYMENT_TARGET = ""; SUPPORTED_PLATFORMS = "watchos watchsimulator"; TARGETED_DEVICE_FAMILY = 4; SWIFT_VERSION = 5.0; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).watchUITests"; PRODUCT_NAME = "$(TARGET_NAME)"; TEST_TARGET_NAME = "OpenGym Watch App"; }; name = Debug; };
+		BA0000000000000000000041 = {isa = XCBuildConfiguration; baseConfigurationReference = BA0000000000000000000016; buildSettings = {SDKROOT = watchos; WATCHOS_DEPLOYMENT_TARGET = 10.0; IPHONEOS_DEPLOYMENT_TARGET = ""; SUPPORTED_PLATFORMS = "watchos watchsimulator"; TARGETED_DEVICE_FAMILY = 4; SWIFT_VERSION = 5.0; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; MARKETING_VERSION = 1.0; GENERATE_INFOPLIST_FILE = YES; PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX).watchUITests"; PRODUCT_NAME = "$(TARGET_NAME)"; TEST_TARGET_NAME = "OpenGym Watch App"; }; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -482,6 +526,8 @@
 		};
 		AC0000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (AC000000000000000000000A, AC000000000000000000000B,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		AD0000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (AD000000000000000000000A, AD000000000000000000000B,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		BA000000000000000000003C = {isa = XCConfigurationList; buildConfigurations = (BA000000000000000000003E, BA000000000000000000003F,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		BA000000000000000000003D = {isa = XCConfigurationList; buildConfigurations = (BA0000000000000000000040, BA0000000000000000000041,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
 /* Begin XCLocalSwiftPackageReference section */
         AE0000000000000000000001 = {isa = XCLocalSwiftPackageReference; relativePath = ../../../apple/OpenGymKit; };
