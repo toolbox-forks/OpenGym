@@ -63,7 +63,14 @@ actor AppleHealthStore: HealthRecordStore {
         if let energy = workout.energyKcal {
             let sample = HKQuantitySample(type: HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
                 quantity: HKQuantity(unit: .kilocalorie(), doubleValue: energy), start: start, end: end)
-            try await builder.add([sample])
+            try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+                builder.add([sample]) { success, error in
+                    if let error { continuation.resume(throwing: error) }
+                    else if success { continuation.resume() }
+                    else { continuation.resume(throwing: NSError(domain: "openGymHealth", code: 1,
+                        userInfo: [NSLocalizedDescriptionKey: "Health did not accept the energy sample"])) }
+                }
+            }
         }
         try await builder.endCollection(at: end)
         _ = try await builder.finishWorkout()
