@@ -93,3 +93,19 @@ it('does not reread Health or rewrite preferences for every unchanged active-set
   await health.syncAppleHealth(S, { read: true })
   expect(m.read).toHaveBeenCalledTimes(2)
 })
+
+it('waits for native state restoration before importing or writing Health data', async () => {
+  m.files.set(health.APPLE_HEALTH_FILE, JSON.stringify({ on: true }))
+  let changed
+  let state = { ready: false, S: {} }
+  const update = vi.fn()
+  const localStore = { getState: () => ({ ...state, update }), subscribe: cb => { changed = cb; return vi.fn() } }
+  const stop = await health.startAppleHealth(localStore)
+  expect(m.write).not.toHaveBeenCalled(); expect(m.read).not.toHaveBeenCalled()
+  const old = state
+  state = { ready: true, S }
+  changed(state, old)
+  await vi.waitFor(() => expect(m.write).toHaveBeenCalledOnce())
+  await vi.waitFor(() => expect(m.read).toHaveBeenCalledOnce())
+  await stop()
+})

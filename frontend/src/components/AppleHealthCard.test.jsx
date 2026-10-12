@@ -47,3 +47,11 @@ it('stops sync explicitly and reports failures', async () => {
   expect(m.disable).toHaveBeenCalledOnce()
   expect(toast).toHaveBeenCalledWith('Could not sync Apple Health')
 })
+
+it('keeps the purpose and error visible if stored identities cannot be loaded', async () => {
+  m.load.mockRejectedValue(Error('corrupt preferences'))
+  await render()
+  expect(host.textContent).toContain('Sync with Apple Health')
+  expect(host.textContent).toContain('Could not sync Apple Health')
+  expect(m.enable).not.toHaveBeenCalled()
+})

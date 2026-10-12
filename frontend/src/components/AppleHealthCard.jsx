@@ -9,9 +9,12 @@ export default function AppleHealthCard({ S, toast }) {
   const [busy, setBusy] = useState(false)
   useEffect(() => {
     let closed = false
-    Promise.all([appleHealthStatus(), loadAppleHealth()]).then(([s, h]) => {
-      if (!closed) { setMode(s.mode); setHealth(h) }
-    }).catch(() => {})
+    Promise.allSettled([appleHealthStatus(), loadAppleHealth()]).then(([s, h]) => {
+      if (!closed) {
+        setMode(s.status === 'fulfilled' ? s.value.mode : 'unsupported')
+        setHealth(h.status === 'fulfilled' ? h.value : { on: false, error: 'storage' })
+      }
+    })
     const off = onAppleHealthChange(h => { if (!closed) setHealth(h) })
     return () => { closed = true; off() }
   }, [])

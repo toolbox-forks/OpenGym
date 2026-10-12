@@ -77,8 +77,8 @@ export function syncAppleHealth(S, { read = false } = {}) {
 export async function enableAppleHealth(S) {
   const p = await bridge()
   if (!p) return { ok: false }
-  await p.health.authorize() // Only this explicit user action opens authorization.
   await loadAppleHealth()
+  await p.health.authorize() // Only this explicit user action opens authorization.
   await save({ ...cached, on: true, error: null })
   const h = await syncAppleHealth(S, { read: true })
   return { ok: !h?.error, health: h }
@@ -95,9 +95,11 @@ export async function startAppleHealth(nextStore) {
   if (!p) return () => {}
   store = nextStore
   await loadAppleHealth()
-  const off = store.subscribe((state, old) => { if (state.S !== old.S) syncAppleHealth(state.S).catch(() => {}) })
+  const off = store.subscribe((state, old) => {
+    if (state.ready && (!old.ready || state.S !== old.S)) syncAppleHealth(state.S, { read: !old.ready }).catch(() => {})
+  })
   const { App } = await import('@capacitor/app')
-  const listener = await App.addListener('appStateChange', ({ isActive }) => { if (isActive) syncAppleHealth(store.getState().S, { read: true }).catch(() => {}) })
-  await syncAppleHealth(store.getState().S, { read: true })
+  const listener = await App.addListener('appStateChange', ({ isActive }) => { if (isActive && store.getState().ready) syncAppleHealth(store.getState().S, { read: true }).catch(() => {}) })
+  if (store.getState().ready) await syncAppleHealth(store.getState().S, { read: true })
   return async () => { off(); await listener.remove() }
 }

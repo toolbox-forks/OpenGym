@@ -34,7 +34,7 @@ The build is standalone: no API, sign-in account or Oura credentials required. E
 bash scripts/apple/verify-iphone.sh
 ```
 
-The inherited Google ML Kit 7.x SDK uses x86_64 simulator slices. On Apple Silicon select a Rosetta iPhone simulator destination if Xcode offers separate native/Rosetta choices. Device builds remain arm64. The script selects an available simulator by UDID with its x86_64 destination, builds Release, runs five native geometry tests and one standalone navigation/relaunch test, and saves logs/xcresult under ignored `frontend/ios/App/output`. Delete or move a previous iphone-tests.xcresult before repeating; xcodebuild requires a new result path. Treat compile failures as failures to fix, not as verification. Product → Test runs the same scheme in Xcode.
+The inherited Google ML Kit 7.x SDK uses x86_64 simulator slices. On Apple Silicon select a Rosetta iPhone simulator destination if Xcode offers separate native/Rosetta choices. Device builds remain arm64. The script selects an available simulator by UDID with its x86_64 destination, builds Release, runs native geometry/Health mapping/storage tests and standalone navigation/Health opt-in/relaunch tests, and saves logs/xcresult under ignored `frontend/ios/App/output`. Delete or move a previous iphone-tests.xcresult before repeating; xcodebuild requires a new result path. Treat compile failures as failures to fix, not as verification. Product → Test runs the same scheme in Xcode.
 
 ## Personal device
 
@@ -46,8 +46,14 @@ No Oura client secret belongs in a distributed mobile xcconfig/binary. Tier 2 ex
 
 ## CI and evidence
 
-GitHub fork → Actions → Apple → choose apple-native (enable workflows if the fork disabled them). Each push runs Release and native/UI simulator checks on macos-15. Download iphone-evidence-<commit> and record the actual test counts and result in PROGRESS.md. The workflow covers the iPhone shell in Phase 1; later phases must add the Swift package and Watch build/UI gates before claiming those exist.
+GitHub fork → Actions → Apple → choose apple-native (enable workflows if the fork disabled them). Each push runs Release and native/UI simulator checks on macos-15. Download iphone-evidence-<commit> and record the actual test counts and result in PROGRESS.md. The workflow covers the iPhone Release/native/UI gates and the independent OpenGymKit package suite. Phase 4 must add the Watch build/UI gates before claiming those exist.
 
 ## Preserve web and Android
 
 Building mobile reuses frontend/dist. Run `npm --prefix frontend run build` again before using dist for self-hosted web deployment. Android keeps its existing SDK, package id, Java 21, storage and native plugins. Do not change frontend/capacitor.config.json's shared appId to personalize iOS: Apple bundle identifiers are overridden in Config/Local.xcconfig instead.
+
+## Apple Health (Phase 3)
+
+Settings → Data & backup shows the purpose row before **Sync with Apple Health** opens authorization. It is off until you enable it. The simulator displays **Simulator Health store** and saves to a private persistent mock store; these records are not real HealthKit samples. On a signed iPhone, enable the HealthKit capability for the app identifier and retain the committed usage descriptions/entitlement. Test reads, writes and withdrawal using DEVICE_TEST_CHECKLIST item 11. Empty read results do not reveal which read permissions were granted. Turning sync off keeps existing Health history.
+
+Phone-only workouts write their actual start/end, UUID metadata and recorded energy when available. Imported workouts without valid intervals are skipped. Body mass, waist and body-fat sync with Health; other circumference fields remain in openGym. Native identity/preferences files use atomic replacement; corrupted preferences cause a sync error rather than silently creating new workout UUIDs. The web and Android retain file-based Health export imports; iPhone uses live Health reads while CSV imports from other apps remain available.

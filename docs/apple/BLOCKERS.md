@@ -1,6 +1,6 @@
 # Apple blockers
 
-Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is incomplete. Phases 0–1 closed; Phase 2 is next. No speculative feature is reported as shipped.
+Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is incomplete. Phases 0–2 closed; Phase 3 is open. No speculative feature is reported as shipped.
 
 ### B-01 — macOS/Xcode build oracle [RESOLVED]
 - VERIFIED `uname -s` → Linux; `xcodebuild -version` → command not found.
@@ -26,7 +26,7 @@ Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is i
 ### B-04 — Physical iPhone and Watch acceptance
 - Needed from owner: paired iPhone/Apple Watch and under-30-minute DEVICE_TEST_CHECKLIST run once integration is complete.
 - Exact steps: install both schemes from Xcode with owner signing, test a workout with phone absent, rest haptics/Always-On, live HR/energy, relaunch/resume, reconnect delivery, duplicate-free Health history, Action button and Double Tap where supported; record OS/hardware/commit and outcomes.
-- Unblocks: actual Health writes, live sensors, background lifetime, WC physical transport and hardware controls. DEVICE_TEST_CHECKLIST.md is now a WRITTEN draft; only Phase 1 shell checks apply to current code. Final checklist is validated/refined in Phase 10.
+- Unblocks: actual Health writes, live sensors, background lifetime, WC physical transport and hardware controls. DEVICE_TEST_CHECKLIST.md is now a WRITTEN draft; Phase 1 shell is verified; the Phase 3 Health bridge is written and awaits its native simulator gate. Final checklist is validated/refined in Phase 10.
 
 ### B-05 — Oura OAuth configuration (optional Tier 2)
 - Needed from owner: Oura OAuth2 application registration and redirect, supplied securely to the owner's exchange service / Keychain. Do not put a client secret in a distributed app binary.
@@ -56,4 +56,4 @@ Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is i
 - VERIFIED the Swift Docker runtime reported 6.2.4, but a later container launch exhausted disk; the owned image/downloads were removed. Do not retry that image in this machine.
 - A smaller official Linux toolchain archive is available from download.swift.org, but official release verification keys at www.swift.org/keys/all-keys.asc return proxy HTTP 403. No unsigned toolchain was installed, and the failed key download was not used.
 - Needed from owner only if Linux Swift tests are required: save/apply the draft's swift.org and www.swift.org additions. Then verify the official detached signature before installation and check decompressed size against remaining space.
-- Alternative: run OpenGymKit tests in the macOS oracle once Phase 2 opens. This optional toolchain does not block the existing web/Android workflow or Phase 1's macOS build.
+- Alternative: run OpenGymKit tests in the macOS oracle as verified in Phase 2. This optional toolchain does not block the existing web/Android workflow or Phase 1's macOS build.
