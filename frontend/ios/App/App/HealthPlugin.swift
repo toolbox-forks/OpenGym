@@ -124,6 +124,7 @@ enum HealthPreferencesFile {
         return result
     }
     static func write(_ object: [String: Any], to url: URL) throws {
+        guard JSONSerialization.isValidJSONObject(object) else { throw HealthMappingError.invalidIdentity }
         let data = try JSONSerialization.data(withJSONObject: object)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
         try data.write(to: url, options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication])
@@ -196,8 +197,12 @@ final class HealthPlugin: CAPPlugin, CAPBridgedPlugin {
         // Decode the complete batch before writing any samples, so malformed JS cannot partly import.
         do {
             let decoder = JSONDecoder()
-            let workouts = try decoder.decode([HealthWorkoutRecord].self, from: JSONSerialization.data(withJSONObject: call.getArray("workouts") ?? []))
-            let measurements = try decoder.decode([HealthMeasurementRecord].self, from: JSONSerialization.data(withJSONObject: call.getArray("measurements") ?? []))
+            let workoutObjects = call.getArray("workouts") ?? [], measurementObjects = call.getArray("measurements") ?? []
+            guard JSONSerialization.isValidJSONObject(workoutObjects), JSONSerialization.isValidJSONObject(measurementObjects) else {
+                call.reject("Invalid Health records", "mapping"); return
+            }
+            let workouts = try decoder.decode([HealthWorkoutRecord].self, from: JSONSerialization.data(withJSONObject: workoutObjects))
+            let measurements = try decoder.decode([HealthMeasurementRecord].self, from: JSONSerialization.data(withJSONObject: measurementObjects))
             let target = try store
             Task {
                 do {

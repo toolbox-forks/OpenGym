@@ -83,10 +83,16 @@ final class HealthPluginTests: XCTestCase {
     func testNativeBridgeRejectsWholeMalformedBatchBeforeAnyWrite() async throws {
         let store = try MockHealthRecordStore(), plugin = HealthPlugin()
         plugin.testingStore = store
-        do {
-            _ = try await invoke(plugin, method: "write", options: ["workouts": [workoutOptions, ["clientId": "bad", "uuid": "broken"]]])
-            XCTFail("Malformed batch accepted")
-        } catch CallError.rejected(let code) { XCTAssertEqual(code, "mapping") }
+        let invalid: [[String: Any]] = [
+            ["clientId": "bad", "uuid": "broken"],
+            ["clientId": "bad", "uuid": "bd0c1f64-9e48-4a29-a81e-4dcfcf79e218", "title": "Bad", "start": 1000.0, "end": 61000.0, "energyKcal": Double.nan]
+        ]
+        for row in invalid {
+            do {
+                _ = try await invoke(plugin, method: "write", options: ["workouts": [workoutOptions, row]])
+                XCTFail("Malformed batch accepted")
+            } catch CallError.rejected(let code) { XCTAssertEqual(code, "mapping") }
+        }
         let saved = await store.workouts(); XCTAssertTrue(saved.isEmpty)
     }
 }
