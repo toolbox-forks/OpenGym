@@ -56,9 +56,10 @@ public struct SyncEnvelope: Codable, Equatable, Sendable {
     /// Version 0 is a reserved prototype snapshot contract; legacy application state stays unchanged.
     public static func migrate(_ data: Data) throws -> SyncEnvelope {
         let value = try JSONDecoder().decode(JSONValue.self, from: data)
-        if value.number("schemaVersion", default: -1) == 0 {
+        if case .number(0) = value["schemaVersion"] {
             guard value.text("kind") == "snapshot" else { throw ContractError.unsupportedSchema(0) }
-            return try SyncEnvelope(kind: .snapshot, payload: value["payload"], sentAt: value.number("sentAt", default: -1))
+            guard case .number(let timestamp) = value["sentAt"] else { throw ContractError.invalidTimestamp }
+            return try SyncEnvelope(kind: .snapshot, payload: value["payload"], sentAt: timestamp)
         }
         return try JSONDecoder().decode(SyncEnvelope.self, from: data)
     }

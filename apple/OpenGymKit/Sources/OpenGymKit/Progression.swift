@@ -171,7 +171,7 @@ public enum Progression {
         if m=="time" {
             let goal=last.number("goal")>0 ? last.number("goal") : cfg.number("sec")
             if last.flag("ok") {return output("up",["sec":.number(goal+step)],[.string("Held every set for the full time. Target goes up by {0}s."),.number(step)])}
-            if count>=deloadAt {let sec=max(5,TrainingMath.snap(goal*0.9,step:5));return output("deload",["sec":.number(sec)],[.string("Short {0} sessions in a row. Back off to {1}s and build up again."),.number(Double(count)),.number(sec)])}
+            if count>=deloadAt {let candidate=TrainingMath.snap(goal*0.9,step:5);let sec=max(5,candidate>=goal ? TrainingMath.snap(goal-5,step:5) : candidate);return output("deload",["sec":.number(sec)],[.string("Short {0} sessions in a row. Back off to {1}s and build up again."),.number(Double(count)),.number(sec)])}
             return output("hold",["sec":.number(goal)],[.string("Came up short last time. Same target again.")])
         }
         if w<=0 && climbs {

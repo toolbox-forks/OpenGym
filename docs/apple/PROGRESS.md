@@ -57,3 +57,6 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 - WRITTEN Swift session read-back and progression policies, with both golden comparison tests. Package linked into the existing iPhone App target; Watch linkage follows in Phase 4.
 - VERIFIED focused JS contract + entire stored fixture regeneration: 19 tests passed; `node scripts/apple/generate-golden.mjs --check` → corpus matches production JS.
 - Next: compile/test the package in macOS CI, fix any Swift/golden mismatches, extend edge vectors and run all full suites before closing Phase 2.
+- VERIFIED macOS package run 38305204425/4bb05567: 16 Swift tests executed, zero failures, covering all 1,133 shared vectors and contract/legacy-state tests. iPhone package-linked build validation is still running.
+- VERIFIED full frontend → 5,087 passed; MCP → 95 passed. API first run → 595 passed / 1 failed in the 150 ms cache TTL probe under concurrent frontend load; isolated cache suite → 2 passed. Full API rerun now runs alone at concurrency 1 (ADR-009); do not claim baseline green until it completes.
+- WRITTEN expanded corpus of 1,173 vectors and short-duration deload fix; new Swift validation required before closure.

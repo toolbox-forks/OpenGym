@@ -14644,5 +14644,3150 @@
         5
       ]
     }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "up",
+      "weight": 22.5,
+      "why": [
+        "Every rep last time. {0} {1} more.",
+        2.5,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "up",
+      "weight": 22.5,
+      "why": [
+        "Every rep last time. {0} {1} more.",
+        2.5,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "up",
+      "weight": 22.5,
+      "reps": 8,
+      "why": [
+        "Top of the rep range in every set. {0} {1} more, back to {2} reps.",
+        2.5,
+        "kg",
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "5965",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "5965",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": true,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "up",
+      "weight": 20,
+      "reps": 12,
+      "sets": 4,
+      "rowReps": [
+        12,
+        12,
+        12,
+        8
+      ],
+      "why": [
+        "{0} reps in every set! Add a set at {1} reps.",
+        12,
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "up",
+      "weight": 17.5,
+      "why": [
+        "Every rep last time. {0} {1} less help.",
+        2.5,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "up",
+      "weight": 17.5,
+      "why": [
+        "Every rep last time. {0} {1} less help.",
+        2.5,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "up",
+      "weight": 17.5,
+      "reps": 8,
+      "why": [
+        "Top of the rep range in every set. {0} {1} less help, back to {2} reps.",
+        2.5,
+        "kg",
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "up",
+      "weight": 0,
+      "reps": 13,
+      "why": [
+        "Bodyweight: every rep last time, so go for {0} this time.",
+        13
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "0009",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "0009",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": true,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "up",
+      "weight": 20,
+      "reps": 12,
+      "sets": 4,
+      "rowReps": [
+        12,
+        12,
+        12,
+        8
+      ],
+      "why": [
+        "{0} reps in every set! Add a set at {1} reps.",
+        12,
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "up",
+      "weight": 24,
+      "why": [
+        "Every rep last time. {0} {1} more.",
+        4,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "up",
+      "weight": 24,
+      "why": [
+        "Every rep last time. {0} {1} more.",
+        4,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "up",
+      "weight": 24,
+      "reps": 8,
+      "why": [
+        "Top of the rep range in every set. {0} {1} more, back to {2} reps.",
+        4,
+        "kg",
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2352",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "dumbbells": {
+          "kg": {
+            "weights": [
+              8,
+              10,
+              12,
+              16,
+              20,
+              24,
+              30
+            ]
+          }
+        }
+      },
+      "cfg": {
+        "id": "2352",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": [
+          8,
+          10,
+          12,
+          16,
+          20,
+          24,
+          30
+        ]
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "up",
+      "weight": 20,
+      "reps": 12,
+      "sets": 4,
+      "rowReps": [
+        12,
+        12,
+        12,
+        8
+      ],
+      "why": [
+        "{0} reps in every set! Add a set at {1} reps.",
+        12,
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "up",
+      "weight": 22.5,
+      "why": [
+        "Every rep last time. {0} {1} more.",
+        2.5,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "greyskull"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "greyskull",
+      "kind": "up",
+      "weight": 22.5,
+      "why": [
+        "Every rep last time. {0} {1} more.",
+        2.5,
+        "kg"
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "double"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "double",
+      "kind": "up",
+      "weight": 22.5,
+      "reps": 8,
+      "why": [
+        "Top of the rep range in every set. {0} {1} more, back to {2} reps.",
+        2.5,
+        "kg",
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 0
+                },
+                "sets": [
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 0,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 0,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "hold",
+      "why": [
+        "No weight logged last time. Enter what you lift and progression takes it from there."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "7620",
+                "target": {
+                  "sets": 3,
+                  "reps": 12,
+                  "repsMin": 8,
+                  "weight": 20
+                },
+                "sets": [
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  },
+                  {
+                    "w": 20,
+                    "r": 12,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "7620",
+        "sets": 3,
+        "reps": 12,
+        "repsMin": 8,
+        "repsMax": 15,
+        "setsMax": 5,
+        "weight": 20,
+        "inc": 2.5,
+        "prog": "triple"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": true,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "triple",
+      "kind": "up",
+      "weight": 20,
+      "reps": 12,
+      "sets": 4,
+      "rowReps": [
+        12,
+        12,
+        12,
+        8
+      ],
+      "why": [
+        "{0} reps in every set! Add a set at {1} reps.",
+        12,
+        8
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-02-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 5
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-02",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 5
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-03",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 5
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 2,
+        "mode": "time",
+        "sec": 5,
+        "inc": 5,
+        "prog": "time"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "time",
+      "kind": "deload",
+      "sec": 5,
+      "why": [
+        "Short {0} sessions in a row. Back off to {1}s and build up again.",
+        3,
+        5
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-02-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 10
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-02",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 10
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-03",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 10
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 2,
+        "mode": "time",
+        "sec": 10,
+        "inc": 5,
+        "prog": "time"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "time",
+      "kind": "deload",
+      "sec": 5,
+      "why": [
+        "Short {0} sessions in a row. Back off to {1}s and build up again.",
+        3,
+        5
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-02-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 15
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-02",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 15
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-03",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 15
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 2,
+        "mode": "time",
+        "sec": 15,
+        "inc": 5,
+        "prog": "time"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "time",
+      "kind": "deload",
+      "sec": 10,
+      "why": [
+        "Short {0} sessions in a row. Back off to {1}s and build up again.",
+        3,
+        10
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-02-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 30
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-02",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 30
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "d": "2026-02-03",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 2,
+                  "mode": "time",
+                  "sec": 30
+                },
+                "sets": [
+                  {
+                    "sec": 1,
+                    "done": true
+                  },
+                  {
+                    "sec": 1,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 2,
+        "mode": "time",
+        "sec": 30,
+        "inc": 5,
+        "prog": "time"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "time",
+      "kind": "deload",
+      "sec": 25,
+      "why": [
+        "Short {0} sessions in a row. Back off to {1}s and build up again.",
+        3,
+        25
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 3,
+                  "reps": 5,
+                  "weight": 60
+                },
+                "sets": [
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  }
+                ],
+                "planned": {
+                  "sets": 3,
+                  "reps": 5,
+                  "weight": 60
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 3,
+        "reps": 10,
+        "weight": 60,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "hold",
+      "weight": 60,
+      "reps": 10,
+      "why": [
+        "Plan changed, so starting from your new target."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 3,
+                  "reps": 5,
+                  "weight": 60
+                },
+                "sets": [
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 3,
+        "reps": 10,
+        "weight": 60,
+        "prog": "linear"
+      },
+      "routine": {
+        "id": "new-routine"
+      },
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "hold",
+      "weight": 60,
+      "reps": 10,
+      "why": [
+        "First time in this routine, so starting from its own target."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 3,
+                  "reps": 5,
+                  "weight": 60
+                },
+                "sets": [
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  }
+                ]
+              }
+            ],
+            "excludeFromProgression": true
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 3,
+        "reps": 10,
+        "weight": 60,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "first",
+      "why": [
+        "Nothing logged yet, so this session sets the baseline."
+      ]
+    }
+  },
+  {
+    "kind": "progression",
+    "input": {
+      "state": {
+        "unit": "kg",
+        "workouts": [
+          {
+            "d": "2026-01-01",
+            "entries": [
+              {
+                "id": "2269",
+                "target": {
+                  "sets": 3,
+                  "reps": 5,
+                  "weight": 60
+                },
+                "sets": [
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  },
+                  {
+                    "w": 60,
+                    "r": 5,
+                    "done": true
+                  }
+                ],
+                "noProg": true
+              }
+            ]
+          }
+        ]
+      },
+      "cfg": {
+        "id": "2269",
+        "sets": 3,
+        "reps": 10,
+        "weight": 60,
+        "prog": "linear"
+      },
+      "routine": {},
+      "facts": {
+        "assisted": false,
+        "loaded": false,
+        "bodyweight": false,
+        "cardio": false,
+        "increment": 2.5,
+        "owned": null
+      }
+    },
+    "expected": {
+      "policy": "linear",
+      "kind": "first",
+      "why": [
+        "Nothing logged yet, so this session sets the baseline."
+      ]
+    }
   }
 ]

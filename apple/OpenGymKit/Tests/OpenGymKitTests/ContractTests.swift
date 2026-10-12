@@ -32,6 +32,7 @@ final class ContractTests: XCTestCase {
         XCTAssertEqual(migrated.schemaVersion,1)
         XCTAssertEqual(migrated.payload.rows("workouts").first?.text("id"),"legacy")
         XCTAssertThrowsError(try SyncEnvelope.migrate(data(#"{"schemaVersion":0,"kind":"ack","payload":{},"sentAt":20}"#)))
+        XCTAssertThrowsError(try SyncEnvelope.migrate(data(#"{"schemaVersion":0,"kind":"snapshot","payload":{},"sentAt":"20"}"#)))
     }
     func testLegacyStateUnknownFieldsAndCatalogueIDsSurvive() throws {
         let original=try decoder.decode(JSONValue.self,from:data(#"{"unit":"kg","future":{"keep":true},"workouts":[{"id":"legacy-id","entries":[{"id":"0025","future":9,"sets":[{"w":60,"r":5,"done":true,"note":"keep"}]}]}]}"#))

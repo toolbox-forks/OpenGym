@@ -3,8 +3,9 @@ import { fileURLToPath } from 'node:url'
 import { estimate1RM } from '../../frontend/src/lib/onerm.js'
 import { plateStack } from '../../frontend/src/lib/plates.js'
 import { convertWeight, convertBodyWeight } from '../../frontend/src/lib/units.js'
-import { insertWarmupRow } from '../../frontend/src/lib/history.js'
+import { insertWarmupRow, isBw, modeOf } from '../../frontend/src/lib/history.js'
 import { readSession, nextPrescription } from '../../frontend/src/lib/progression.js'
+import { ownedWeightsFor } from '../../frontend/src/lib/dumbbells.js'
 import { EXDB, isAssisted, defaultIncrement, isLoadedEq } from '../../frontend/src/lib/exercises.js'
 
 export function generateGolden() {
@@ -45,6 +46,30 @@ export function generateGolden() {
       if(prog==='time') state.workouts.forEach(w=>w.entries.forEach(e=>{e.target={sets:3,sec:30,mode:'time'};e.sets.forEach(s=>{s.sec=s.r*6;delete s.r})}))
       add('progression',{state,cfg,routine:{},facts},nextPrescription(state,cfg,{}))
     }
+  }
+  // Exercise-classification and small-load cases from the existing assistance/bodyweight,
+  // owned-dumbbell, plan-change and timed-progression regressions.
+  const factsFor=(state,cfg) => ({assisted:isAssisted(cfg),loaded:isLoadedEq(cfg.id),bodyweight:isBw(cfg),cardio:modeOf(cfg)==='cardio',increment:defaultIncrement(cfg.id,state.unit||'kg'),owned:ownedWeightsFor(state,cfg)})
+  const ids=[EXDB.find(e=>e.eq==='body weight').id,EXDB.find(e=>isAssisted(e.id)).id,EXDB.find(e=>e.eq==='dumbbell').id,EXDB.find(e=>e.eq==='barbell'&&e.bp==='chest').id]
+  for(const id of ids) for(const prog of ['linear','greyskull','double','triple']) for(const weight of [0,20]) {
+    const cfg={id,sets:3,reps:12,repsMin:8,repsMax:15,setsMax:5,weight,inc:2.5,prog}
+    const state=hist([[weight,12,12,12]],{sets:3,reps:12,repsMin:8,weight})
+    state.workouts.forEach(w=>w.entries.forEach(e=>e.id=id))
+    if(EXDB.find(e=>e.id===id).eq==='dumbbell') state.dumbbells={kg:{weights:[8,10,12,16,20,24,30]}}
+    add('progression',{state,cfg,routine:{},facts:factsFor(state,cfg)},nextPrescription(state,cfg,{}))
+  }
+  for(const sec of [5,10,15,30]) {
+    const cfg={id:lift,sets:2,mode:'time',sec,inc:5,prog:'time'}
+    const state={unit:'kg',workouts:[1,2,3].map(i=>({d:`2026-02-0${i}`,entries:[{id:lift,target:{sets:2,mode:'time',sec},sets:[{sec:1,done:true},{sec:1,done:true}]}]}))}
+    add('progression',{state,cfg,routine:{},facts:factsFor(state,cfg)},nextPrescription(state,cfg,{}))
+  }
+  for(const option of ['planChanged','ownRoutine','excludedWorkout','excludedEntry']) {
+    const cfg={id:lift,sets:3,reps:10,weight:60,prog:'linear'},state=hist([[60,5,5,5]])
+    const entry=state.workouts[0].entries[0];const routine=option==='ownRoutine'?{id:'new-routine'}:{}
+    if(option==='planChanged') entry.planned={sets:3,reps:5,weight:60}
+    if(option==='excludedWorkout') state.workouts[0].excludeFromProgression=true
+    if(option==='excludedEntry') entry.noProg=true
+    add('progression',{state,cfg,routine,facts:factsFor(state,cfg)},nextPrescription(state,cfg,routine))
   }
   return cases
 }
