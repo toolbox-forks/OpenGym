@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://opengym.local/schemas/sync-envelope/v1",
+  "title": "OpenGym SyncEnvelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "kind", "payload", "sentAt"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "kind": {"enum": ["snapshot", "workoutCompleted", "liveEvent", "ack"]},
+    "payload": {"type": "object"},
+    "sentAt": {"type": "number", "minimum": 0}
+  }
+}

@@ -33,6 +33,7 @@
 		AB0000000000000000000008 = {isa = PBXBuildFile; fileRef = AB0000000000000000000007; };
 		AC0000000000000000000004 = {isa = PBXBuildFile; fileRef = AC0000000000000000000003; };
 		AD0000000000000000000004 = {isa = PBXBuildFile; fileRef = AD0000000000000000000003; };
+		AE0000000000000000000003 /* OpenGymKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE0000000000000000000002; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A084ECDBA7D38E1E42DFC39D /* Pods_App.framework in Frameworks */,
+				AE0000000000000000000003 /* OpenGymKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +160,7 @@
 			dependencies = (
 			);
 			name = App;
+			packageProductDependencies = (AE0000000000000000000002,);
 			productName = App;
 			productReference = 504EC3041FED79650016851F /* App.app */;
 			productType = "com.apple.product-type.application";
@@ -190,6 +193,7 @@
 			);
 			mainGroup = 504EC2FB1FED79650016851F;
 			packageReferences = (
+				AE0000000000000000000001,
 			);
 			productRefGroup = 504EC3051FED79650016851F /* Products */;
 			projectDirPath = "";
@@ -471,6 +475,12 @@
 		AC0000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (AC000000000000000000000A, AC000000000000000000000B,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 		AD0000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (AD000000000000000000000A, AD000000000000000000000B,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
+/* Begin XCLocalSwiftPackageReference section */
+        AE0000000000000000000001 = {isa = XCLocalSwiftPackageReference; relativePath = ../../../apple/OpenGymKit; };
+/* End XCLocalSwiftPackageReference section */
+/* Begin XCSwiftPackageProductDependency section */
+        AE0000000000000000000002 = {isa = XCSwiftPackageProductDependency; productName = OpenGymKit; };
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 504EC2FC1FED79650016851F /* Project object */;
 }

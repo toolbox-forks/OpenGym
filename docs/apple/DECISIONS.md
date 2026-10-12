@@ -40,3 +40,8 @@
 - Consequence: rerun both simulator Release and native/UI tests before closing Phase 1. Log runner architecture/Xcode version through an Actions notice as well as normal stdout. Do not claim simulator camera scans validate real-device scanning.
 
 - VERIFIED official pinned podspec `https://cdn.cocoapods.org/Specs/b/e/b/GoogleMLKit/7.0.0/GoogleMLKit.podspec.json` → both pod_target_xcconfig and user_target_xcconfig exclude arm64 for iphonesimulator. The diagnosis follows the actual dependency declaration.
+
+### ADR-008 — Lossless state boundary and catalogue facts (2026-10-12)
+- Keep raw-backed Codable state models with typed accessors so unknown/new app fields survive round trips. Exercise `id` stays a catalogue key; additive RecordIdentity carries a separate UUID, deviceId and updatedAt. Envelope v1 has a strict four-field schema; v0 is a reserved prototype snapshot migration, not a claim about previously shipped Watch data.
+- Progression receives catalogue facts (loaded/bodyweight/assisted/cardio/default step/owned weights) from the phone snapshot. Do not maintain a second hard-coded list of 5,632 exercise ids in Swift. Golden fixtures preserve the production JavaScript function outputs and reasons; Swift executes its own implementation against them.
+- OpenGymKit uses Foundation only and no third-party dependency. It is linked as a local Swift package to the existing App target; future Watch/extensions will use the same product. Mac CI runs its independent tests, and no Apple-only framework is introduced into the package.

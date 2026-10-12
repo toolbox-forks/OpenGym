@@ -48,6 +48,12 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 - VERIFIED PBX Debug/Release project configurations now propagate the simulator-only exclusion; physical arm64 is unaffected. Official Google ML Kit 7.0.0 podspec confirms the exclusion (ADR-007).
 - WRITTEN 6ea29ace is pushed; Apple run 38301101740 is queued for the consistent app/pod/test destination. That run subsequently passed all 6 native/simulator tests.
 
-## Phase 2: OpenGymKit [NEXT]
+## Phase 2: OpenGymKit [OPEN 2026-10-12]
 - Start with tests and shared fixtures. Mac CI is available for Swift package tests; do not reintroduce the oversized Swift Docker image on this Linux disk.
 - Native deployment minima and simulator-only ML Kit settings are documented in ADR-003/007. Run full JS suites and Swift fixture suite before closure.
+- WRITTEN lossless Codable state adapters, identity/envelope v1/schema, prototype migration, 1RM (all formulas/weighted), unit conversion, plate stack and warm-up math.
+- VERIFIED JS envelope boundary: focused `apple-contract.test.js` → 18 passed. Shared fixture generator produced 1,133 cases from the same production functions and representative inputs exercised by existing Vitest suites.
+- WRITTEN Swift contract/calculator fixture tests and macOS kit oracle. Swift progression/session-readback implementation remains necessary before phase closure; no golden parity claim is made yet.
+- WRITTEN Swift session read-back and progression policies, with both golden comparison tests. Package linked into the existing iPhone App target; Watch linkage follows in Phase 4.
+- VERIFIED focused JS contract + entire stored fixture regeneration: 19 tests passed; `node scripts/apple/generate-golden.mjs --check` → corpus matches production JS.
+- Next: compile/test the package in macOS CI, fix any Swift/golden mismatches, extend edge vectors and run all full suites before closing Phase 2.

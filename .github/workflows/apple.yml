@@ -57,3 +57,23 @@ jobs:
             frontend/ios/App/output/
             frontend/ios/App/Podfile.lock
           if-no-files-found: warn
+
+  kit:
+    name: OpenGymKit Swift and shared fixtures
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Verify production golden fixtures
+        run: node scripts/apple/generate-golden.mjs --check
+      - name: Swift package tests
+        run: bash scripts/apple/verify-kit.sh
+      - name: Retain package evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: kit-evidence-${{ github.sha }}
+          path: frontend/ios/App/output/kit-tests.log

@@ -35,3 +35,7 @@ docs/superpowers/plans/
 Config/Local.xcconfig
 *.xcresult
 frontend/ios/App/DerivedData/
+
+# Swift package build state
+**/.build/
+**/.swiftpm/
