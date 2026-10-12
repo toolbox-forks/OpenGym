@@ -37,6 +37,7 @@ import { REST_MAX, REST_PAUSE_MIN, REST_PAUSE_MAX, fmtRest, fmtDuration } from '
 import { starterPlanSheet, confirmSheet, importFromApp, importFromHevy, equipmentProfileSheet, plateInventorySheet, dumbbellInventorySheet, menuSheet } from '../sheets.jsx'
 import Icon from '../components/Icon.jsx'
 import AppleHealthCard from '../components/AppleHealthCard.jsx'
+import { appleHealthStatus } from '../lib/apple-health.js'
 import { durationSheet } from '../components/DurationWheel.jsx'
 import { showsConnection, showsLocalLine } from '../components/SyncBanner.jsx'
 import BackupFolderRow, { useBackupFolder, autoBackupSubtitle } from '../components/BackupFolderRow.jsx'
@@ -152,6 +153,13 @@ export default function Settings({ page = null, find = null, via = null }) {
   // --- update check state ---
   const [updateInfo, setUpdateInfo] = useState(null) // { hasUpdate, latestVersion, apkUrl, hashUrl } | null
   const [android, setAndroid] = useState(false)
+  const [appleHealth, setAppleHealth] = useState(false)
+  useEffect(() => {
+    if (!MOBILE) return
+    let gone = false
+    appleHealthStatus().then(s => { if (!gone) setAppleHealth(s.mode === 'healthkit' || s.mode === 'mock') }).catch(() => {})
+    return () => { gone = true }
+  }, [])
   const [checking, setChecking] = useState(false)
   // Where auto-backup writes on this Android phone, for the Auto-backup row's own subtitle.
   const [backupDir] = useBackupFolder(MOBILE && android && !!S.autoBackup)
@@ -790,7 +798,7 @@ export default function Settings({ page = null, find = null, via = null }) {
       <Section title={t('Bring data in')}>
         <Row icon="download" iconTint="var(--teal)" title={t('Import backup')} accessory="chevron" onClick={() => fileRef.current.click()} />
         <Row icon="download" iconTint="var(--teal)" title={t('Import from another app')}
-          subtitle={t('FitNotes, Strong, Hevy, or body weight from Apple Health')}
+          subtitle={appleHealth ? 'FitNotes, Strong, Hevy' : t('FitNotes, Strong, Hevy, or body weight from Apple Health')}
           accessory="chevron" onClick={() => importRef.current.click()} />
         <Row icon="key" iconTint="var(--teal)" title={t('Import from Hevy')}
           subtitle={t('Pull your history with a Hevy Pro API key')}
@@ -802,8 +810,8 @@ export default function Settings({ page = null, find = null, via = null }) {
       </Section>
       <input ref={fileRef} type="file" accept=".json,.zip,application/json,application/zip" style={{ display: 'none' }} onChange={doImport} />
       {/* Reset after reading so picking the same file twice still fires onChange. */}
-      <input ref={importRef} type="file" accept=".csv,.xml,text/csv,text/xml" style={{ display: 'none' }}
-        onChange={ev => { const f = ev.target.files[0]; if (f) importFromApp(f); ev.target.value = '' }} />
+      <input ref={importRef} type="file" accept={appleHealth ? ".csv,text/csv" : ".csv,.xml,text/csv,text/xml"} style={{ display: 'none' }}
+        onChange={ev => { const f = ev.target.files[0]; if (f) { if (appleHealth && /\.xml$/i.test(f.name)) toast(t('Sync with Apple Health')); else importFromApp(f) } ev.target.value = '' }} />
     </>,
 
     about: () => <>

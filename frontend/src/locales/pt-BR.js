@@ -4,6 +4,14 @@
 import pt from './pt.js'
 
 export const PT_BR_OVERRIDES = {
+  // Apple Health purpose and controls
+  "Apple Health": "Saúde da Apple",
+  "Sync with Apple Health": "Sincronizar com a Saúde da Apple",
+  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "Salva treinos, energia e medidas corporais. Lê medidas, frequência cardíaca e recuperação. Os dados ficam no seu dispositivo e no seu próprio servidor.",
+  "Turning this off keeps existing data in Apple Health.": "Desativar mantém os dados existentes na Saúde da Apple.",
+  "Simulator Health store": "Dados de Saúde do simulador",
+  "Could not sync Apple Health": "Não foi possível sincronizar a Saúde da Apple",
+
   '{0} set brings an {1} with it. Switch on Effort per set in Settings to see it.': '{0} série traz um {1} junto. Ative “Esforço por série” nas Configurações para ver.',
   'Add to this set': 'Adicionar a esta série',
   'Copy this exercise’s warm-up sets, and the rest and note from its Exercise settings, into the routine. A note added for today stays with this workout. Your workout history is kept.': 'Copia para a rotina as séries de aquecimento deste exercício, e o descanso e a anotação das Configurações do exercício dele. Uma anotação adicionada para hoje fica com este treino. Seu histórico de treinos é mantido.',
@@ -1405,12 +1413,4 @@ export const PT_BR_OVERRIDES = {
   'Releases are checked on GitHub. The download is verified against its checksum before the installer opens.': 'As versões são verificadas no GitHub. O download é conferido pela soma de verificação antes de abrir o instalador.',
 }
 
-export default { ...pt, ...PT_BR_OVERRIDES,
-  // Apple Health purpose and controls
-  "Apple Health": "Saúde da Apple",
-  "Sync with Apple Health": "Sincronizar com a Saúde da Apple",
-  "Save workouts, energy and body measurements. Read body measurements, heart rate and recovery. Data stays on your device and your own server.": "Salva treinos, energia e medidas corporais. Lê medidas, frequência cardíaca e recuperação. Os dados ficam no seu dispositivo e no seu próprio servidor.",
-  "Turning this off keeps existing data in Apple Health.": "Desativar mantém os dados existentes na Saúde da Apple.",
-  "Simulator Health store": "Dados de Saúde do simulador",
-  "Could not sync Apple Health": "Não foi possível sincronizar a Saúde da Apple",
-}
+export default { ...pt, ...PT_BR_OVERRIDES }
