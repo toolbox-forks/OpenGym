@@ -30,3 +30,8 @@ frontend/bundle-size.json
 
 # Local planning notes
 docs/superpowers/plans/
+
+# Apple owner settings and build reports
+Config/Local.xcconfig
+*.xcresult
+frontend/ios/App/DerivedData/

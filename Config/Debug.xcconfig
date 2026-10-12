@@ -1,0 +1,2 @@
+#include "../frontend/ios/App/Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"
+#include "Apple.xcconfig"

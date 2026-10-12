@@ -168,9 +168,15 @@ let buzz = true
 export function setVibrate(on) { buzz = on !== false }
 // Offered where the browser can buzz at all: iOS has no navigator.vibrate. The Android app needs
 // android.permission.VIBRATE in its manifest, without which the WebView drops every call.
-export const vibrateSupported = () => typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function'
+let nativeHaptic = null
+export function setNativeHaptic(fn) { nativeHaptic = typeof fn === 'function' ? fn : null }
+export const vibrateSupported = () => !!nativeHaptic || (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function')
 export function vibrate(p) {
   if (!buzz) return
+  if (nativeHaptic) {
+    try { Promise.resolve(nativeHaptic(p)).catch(() => {}) } catch { /* unavailable hardware */ }
+    return
+  }
   try { navigator.vibrate && navigator.vibrate(p) } catch (e) { /* */ }
 }
 

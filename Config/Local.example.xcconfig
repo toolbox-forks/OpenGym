@@ -1,0 +1,8 @@
+// Copy to Local.xcconfig. Never commit owner credentials.
+// Empty team means unsigned simulator development.
+APPLE_TEAM_ID =
+BUNDLE_ID_PREFIX = com.example.opengym
+APP_GROUP_ID = group.com.example.opengym
+OURA_CLIENT_ID =
+OURA_REDIRECT_URI = opengym:/$()/oura/callback
+// Oura client secrets belong on the owner's exchange service, never in the app.

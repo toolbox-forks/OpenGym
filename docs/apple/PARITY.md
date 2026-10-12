@@ -50,4 +50,4 @@ This is the Phase 0 inventory of actual source, not a claim of iPhone/Watch vali
 | Owned data / self-host / JSON+CSV / Strong+Hevy import | 5,6 | WRITTEN inventory |
 | Wrist controls/Always-On/complications | 4,8 | WRITTEN inventory |
 | Muscle map / remaining weekly muscles | 7 | WRITTEN inventory |
-| All existing UI languages on phone and Watch | 10 | WRITTEN inventory; 19-language requirement per ADR-002 |
+| All existing UI languages on phone and Watch | 10 | WRITTEN inventory; 20-language requirement per ADR-002 |

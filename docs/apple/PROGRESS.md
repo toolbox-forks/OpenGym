@@ -14,6 +14,14 @@ Goal: BRIEF.md §10, branch apple-native. Read BRIEF.md in full before continuin
 - BLOCKED self-hosted image verification: `BUILDX_CONFIG=/workspace/.docker-buildx docker build --target default -t opengym-apple-baseline-api:local ./api` → APKINDEX HTTP 403, B-07. No verification disabled. This is an additional baseline integration check; Phase 0 specified suite and web gates passed.
 - Next: Phase 1 iPhone shell and macOS oracle. Re-run full suites before its closure.
 
+## Phase 1: iPhone shell in Xcode [OPEN 2026-10-12]
+- WRITTEN OpenGym shared scheme, iOS 17 owner xcconfig chain, CocoaPods workspace, native AppleShell Swift plugin and bridge registration. Existing printing/Capacitor plugins remain registered.
+- WRITTEN five XCTest geometry tests and one XCUITest standalone mode/navigation/relaunch smoke test. Native targets have not compiled yet on this Linux host.
+- VERIFIED focused JS bridge/keyboard/sound checks: `npm --prefix frontend test -- --maxWorkers=2 src/lib/apple-shell.test.js src/lib/native-keyboard.test.js src/lib/rest-sounds.test.js` → 22 passed.
+- WRITTEN macOS Apple workflow, dynamic simulator selection, Release/test evidence capture, and XCODE_SETUP for first-time use.
+- BLOCKED native Release build and simulator launch on B-01/B-02 until the macOS oracle is accessible. Do not close Phase 1 or start Phase 2 until its simulator gate has evidence.
+- Next: validate project structure and mobile bundle, full JS suites, Android baseline; push branch to trigger macOS oracle. Retry API after network settings apply.
+
 ## Remaining phases
 
-Phases 1–10 have not opened at this commit. Follow PLAN.md in order. In particular no Watch, HealthKit or Oura implementation is present yet. Do not report the product or goal complete.
+Phases 2–10 are ordered behind Phase 1's gate. Their required work and checks remain in PLAN and PARITY. No Watch, HealthKit or Oura implementation exists yet; the goal is incomplete.

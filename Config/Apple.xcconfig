@@ -1,0 +1,12 @@
+// Simulator-safe defaults. Owner overrides live in ignored Local.xcconfig.
+APPLE_TEAM_ID =
+BUNDLE_ID_PREFIX = com.example.opengym
+APP_GROUP_ID = group.com.example.opengym
+OURA_CLIENT_ID =
+// Double slash in xcconfig is a comment; preserve it through an empty substitution.
+OURA_REDIRECT_URI = opengym:/$()/oura/callback
+#include? "Local.xcconfig"
+DEVELOPMENT_TEAM = $(APPLE_TEAM_ID)
+PRODUCT_BUNDLE_IDENTIFIER = $(BUNDLE_ID_PREFIX)
+IPHONEOS_DEPLOYMENT_TARGET = 17.0
+SWIFT_VERSION = 5.0

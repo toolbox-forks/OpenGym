@@ -1,0 +1,59 @@
+name: Apple
+on:
+  push:
+    branches: [apple-native]
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - 'apple/**'
+      - 'Config/**'
+      - 'scripts/apple/**'
+      - '.github/workflows/apple.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: apple-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  iphone:
+    name: iPhone Release and standalone tests
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Inspect Xcode and SDKs
+        run: |
+          xcodebuild -version
+          xcodebuild -showsdks
+          xcrun simctl list runtimes
+      - name: Install locked frontend dependencies
+        run: npm ci
+        working-directory: frontend
+      - name: CocoaPods
+        run: |
+          gem install --user-install cocoapods --version 1.16.2 --no-document
+          echo "$(ruby -e 'puts Gem.user_dir')/bin" >> "$GITHUB_PATH"
+      - name: Build standalone bundle and stage licensed media
+        working-directory: frontend
+        run: |
+          VITE_MOBILE=1 npm run build
+          node ../scripts/catalogue/stage-media.mjs dist
+          npx cap sync ios
+          node scripts/check-mobile-bundle.mjs
+      - name: Release simulator build and native/UI tests
+        run: bash scripts/apple/verify-iphone.sh
+      - name: Upload evidence for this commit
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: iphone-evidence-${{ github.sha }}
+          path: |
+            frontend/ios/App/output/
+            frontend/ios/App/Podfile.lock
+          if-no-files-found: warn

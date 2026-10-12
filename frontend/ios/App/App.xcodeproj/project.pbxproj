@@ -6,6 +6,16 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		AC000000000000000000000D = {isa = PBXContainerItemProxy; containerPortal = 504EC2FC1FED79650016851F; proxyType = 1; remoteGlobalIDString = 504EC3031FED79650016851F; remoteInfo = App; };
+		AD000000000000000000000D = {isa = PBXContainerItemProxy; containerPortal = 504EC2FC1FED79650016851F; proxyType = 1; remoteGlobalIDString = 504EC3031FED79650016851F; remoteInfo = App; };
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		AC000000000000000000000C = {isa = PBXTargetDependency; target = 504EC3031FED79650016851F; targetProxy = AC000000000000000000000D; };
+		AD000000000000000000000C = {isa = PBXTargetDependency; target = 504EC3031FED79650016851F; targetProxy = AD000000000000000000000D; };
+/* End PBXTargetDependency section */
+
 /* Begin PBXBuildFile section */
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
@@ -18,6 +28,11 @@
 		A084ECDBA7D38E1E42DFC39D /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */; };
 		AA0100000000000000000002 /* PrintPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0100000000000000000001 /* PrintPlugin.swift */; };
 		AA0100000000000000000004 /* PrintPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0100000000000000000003 /* PrintPlugin.m */; };
+		AB0000000000000000000002 /* OpenGymBridgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000001; };
+		AB0000000000000000000004 /* AppleShellPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000003; };
+		AB0000000000000000000008 = {isa = PBXBuildFile; fileRef = AB0000000000000000000007; };
+		AC0000000000000000000004 = {isa = PBXBuildFile; fileRef = AC0000000000000000000003; };
+		AD0000000000000000000004 = {isa = PBXBuildFile; fileRef = AD0000000000000000000003; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +51,15 @@
 		AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
+		AB0000000000000000000001 /* OpenGymBridgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGymBridgeViewController.swift; sourceTree = "<group>"; };
+		AB0000000000000000000003 /* AppleShellPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleShellPlugin.swift; sourceTree = "<group>"; };
+		AB0000000000000000000005 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ../../../Config/Debug.xcconfig; sourceTree = "<group>"; };
+		AB0000000000000000000006 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ../../../Config/Release.xcconfig; sourceTree = "<group>"; };
+		AB0000000000000000000007 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellGeometry.swift; sourceTree = "<group>"; };
+		AC0000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellGeometryTests.swift; sourceTree = "<group>"; };
+		AC0000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AppleShellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandaloneSmokeTests.swift; sourceTree = "<group>"; };
+		AD0000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = OpenGymUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +71,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AC0000000000000000000008 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		AD0000000000000000000008 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,6 +87,10 @@
 		504EC2FB1FED79650016851F = {
 			isa = PBXGroup;
 			children = (
+				AB0000000000000000000005 /* Debug.xcconfig */,
+				AB0000000000000000000006 /* Release.xcconfig */,
+				AC0000000000000000000002 /* AppleShellTests */,
+				AD0000000000000000000002 /* OpenGymUITests */,
 				504EC3061FED79650016851F /* App */,
 				504EC3051FED79650016851F /* Products */,
 				7F8756D8B27F46E3366F6CEA /* Pods */,
@@ -71,6 +101,8 @@
 		504EC3051FED79650016851F /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				AC0000000000000000000005 /* AppleShellTests.xctest */,
+				AD0000000000000000000005 /* OpenGymUITests.xctest */,
 				504EC3041FED79650016851F /* App.app */,
 			);
 			name = Products;
@@ -82,6 +114,9 @@
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				AA0000000000000000000001 /* SceneDelegate.swift */,
+				AB0000000000000000000007 /* ShellGeometry.swift */,
+				AB0000000000000000000001 /* OpenGymBridgeViewController.swift */,
+				AB0000000000000000000003 /* AppleShellPlugin.swift */,
 				AA0100000000000000000001 /* PrintPlugin.swift */,
 				AA0100000000000000000003 /* PrintPlugin.m */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
@@ -103,6 +138,8 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AC0000000000000000000002 = {isa = PBXGroup; children = (AC0000000000000000000003,); path = AppleShellTests; sourceTree = "<group>"; };
+		AD0000000000000000000002 = {isa = PBXGroup; children = (AD0000000000000000000003,); path = OpenGymUITests; sourceTree = "<group>"; };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -125,6 +162,8 @@
 			productReference = 504EC3041FED79650016851F /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		AC0000000000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = AC0000000000000000000009; buildPhases = (AC0000000000000000000006, AC0000000000000000000008, AC0000000000000000000007,); buildRules = (); dependencies = (AC000000000000000000000C,); name = AppleShellTests; productName = AppleShellTests; productReference = AC0000000000000000000005; productType = "com.apple.product-type.bundle.unit-test"; };
+		AD0000000000000000000001 = {isa = PBXNativeTarget; buildConfigurationList = AD0000000000000000000009; buildPhases = (AD0000000000000000000006, AD0000000000000000000008, AD0000000000000000000007,); buildRules = (); dependencies = (AD000000000000000000000C,); name = OpenGymUITests; productName = OpenGymUITests; productReference = AD0000000000000000000005; productType = "com.apple.product-type.bundle.ui-testing"; };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -156,6 +195,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				AD0000000000000000000001 /* OpenGymUITests */,
+				AC0000000000000000000001 /* AppleShellTests */,
 				504EC3031FED79650016851F /* App */,
 			);
 		};
@@ -175,6 +216,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AC0000000000000000000007 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		AD0000000000000000000007 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -220,11 +263,16 @@
 			files = (
 				504EC3081FED79650016851F /* AppDelegate.swift in Sources */,
 				AA0000000000000000000002 /* SceneDelegate.swift in Sources */,
+				AB0000000000000000000008 /* ShellGeometry.swift in Sources */,
+				AB0000000000000000000002 /* OpenGymBridgeViewController.swift in Sources */,
+				AB0000000000000000000004 /* AppleShellPlugin.swift in Sources */,
 				AA0100000000000000000002 /* PrintPlugin.swift in Sources */,
 				AA0100000000000000000004 /* PrintPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AC0000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AC0000000000000000000004,); runOnlyForDeploymentPostprocessing = 0; };
+		AD0000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AD0000000000000000000004,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -295,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -346,7 +394,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -356,17 +404,17 @@
 		};
 		504EC3171FED79650016851F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */;
+			baseConfigurationReference = AB0000000000000000000005 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
-				PRODUCT_BUNDLE_IDENTIFIER = ch.duartesantos.opengym;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
@@ -376,16 +424,16 @@
 		};
 		504EC3181FED79650016851F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */;
+			baseConfigurationReference = AB0000000000000000000006 /* Release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.duartesantos.opengym;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_PREFIX)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_VERSION = 5.0;
@@ -393,6 +441,10 @@
 			};
 			name = Release;
 		};
+		AC000000000000000000000A = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; PRODUCT_BUNDLE_IDENTIFIER = "com.example.opengym.AppleShellTests"; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; BUNDLE_LOADER = "$(TEST_HOST)"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";}; name = Debug; };
+		AC000000000000000000000B = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; PRODUCT_BUNDLE_IDENTIFIER = "com.example.opengym.AppleShellTests"; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; BUNDLE_LOADER = "$(TEST_HOST)"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/App.app/App";}; name = Release; };
+		AD000000000000000000000A = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; PRODUCT_BUNDLE_IDENTIFIER = "com.example.opengym.OpenGymUITests"; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; TEST_TARGET_NAME = App;}; name = Debug; };
+		AD000000000000000000000B = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; PRODUCT_BUNDLE_IDENTIFIER = "com.example.opengym.OpenGymUITests"; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = 1; TEST_TARGET_NAME = App;}; name = Release; };
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -414,6 +466,8 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		AC0000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (AC000000000000000000000A, AC000000000000000000000B,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		AD0000000000000000000009 = {isa = XCConfigurationList; buildConfigurations = (AD000000000000000000000A, AD000000000000000000000B,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
 /* End XCConfigurationList section */
 	};
 	rootObject = 504EC2FC1FED79650016851F /* Project object */;
