@@ -35,6 +35,6 @@
 
 ### ADR-007 — Consistent simulator architecture for ML Kit (2026-10-12)
 - VERIFIED Apple run 38299276900: Release simulator build passed; Debug tests failed because AppDelegate's Capacitor import requested x86_64, but Capacitor.framework had only an arm64 simulator Swift module.
-- Existing Google ML Kit 7.x transitively configures arm64 simulator exclusion for the app. The CocoaPods post-install now applies the same simulator-only exclusion to every pod configuration, avoiding mismatched Debug slices. Physical iPhone arm64 remains enabled.
+- Existing Google ML Kit 7.x transitively configures arm64 simulator exclusion for the app. The CocoaPods post-install applies the same simulator-only exclusion to every pod configuration; the app project propagates it to both test targets as well. The verify script selects the x86_64 simulator destination explicitly, avoiding mismatched Debug/test slices. Physical iPhone arm64 remains enabled.
 - Alternatives weighed: overriding all SDK architectures globally (risks real-device builds); removing the existing scanner (breaks existing functionality); replacing its dependency (unneeded during this phase).
 - Consequence: rerun both simulator Release and native/UI tests before closing Phase 1. Log runner architecture/Xcode version through an Actions notice as well as normal stdout. Do not claim simulator camera scans validate real-device scanning.

@@ -19,13 +19,13 @@ echo "::notice::Apple oracle host architecture: $(uname -m); $(xcodebuild -versi
 xcrun simctl boot "$phone_udid" 2>/dev/null || xcrun simctl list devices booted | grep -F "$phone_udid"
 xcrun simctl bootstatus "$phone_udid" -b
 xcodebuild -workspace frontend/ios/App/App.xcworkspace -scheme OpenGym \
-  -configuration Release -destination "platform=iOS Simulator,id=$phone_udid" \
+  -configuration Release -destination "platform=iOS Simulator,id=$phone_udid,arch=x86_64" \
   -derivedDataPath "$APPLE_BUILD_DIR" CODE_SIGNING_ALLOWED=NO build \
   > "$APPLE_RESULTS_DIR/iphone-release.log" 2>&1
 echo '::notice::VERIFIED OpenGym Release simulator build passed.'
 # A missing native/test target must fail; a Release build alone cannot show standalone works.
 xcodebuild -workspace frontend/ios/App/App.xcworkspace -scheme OpenGym \
-  -destination "platform=iOS Simulator,id=$phone_udid" -derivedDataPath "$APPLE_BUILD_DIR" \
+  -destination "platform=iOS Simulator,id=$phone_udid,arch=x86_64" -derivedDataPath "$APPLE_BUILD_DIR" \
   -resultBundlePath "$APPLE_RESULTS_DIR/iphone-tests.xcresult" CODE_SIGNING_ALLOWED=NO \
   -only-testing:AppleShellTests -only-testing:OpenGymUITests test \
   > "$APPLE_RESULTS_DIR/iphone-tests.log" 2>&1

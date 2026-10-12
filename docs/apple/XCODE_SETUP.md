@@ -34,7 +34,7 @@ The build is standalone: no API, sign-in account or Oura credentials required. E
 bash scripts/apple/verify-iphone.sh
 ```
 
-This selects an available simulator by UDID, builds Release, runs five native geometry tests and one standalone navigation/relaunch test, and saves logs/xcresult under ignored `frontend/ios/App/output`. Delete or move a previous iphone-tests.xcresult before repeating; xcodebuild requires a new result path. Treat compile failures as failures to fix, not as verification. Product → Test runs the same scheme in Xcode.
+The inherited Google ML Kit 7.x SDK uses x86_64 simulator slices. On Apple Silicon select a Rosetta iPhone simulator destination if Xcode offers separate native/Rosetta choices. Device builds remain arm64. The script selects an available simulator by UDID with its x86_64 destination, builds Release, runs five native geometry tests and one standalone navigation/relaunch test, and saves logs/xcresult under ignored `frontend/ios/App/output`. Delete or move a previous iphone-tests.xcresult before repeating; xcodebuild requires a new result path. Treat compile failures as failures to fix, not as verification. Product → Test runs the same scheme in Xcode.
 
 ## Personal device
 
