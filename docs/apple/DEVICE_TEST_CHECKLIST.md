@@ -1,6 +1,6 @@
 # Physical-device acceptance checklist
 
-WRITTEN — draft acceptance steps, not completed test evidence. Phase 1 shell and Phase 2 shared kit are verified; the Phase 3 Health bridge is written, with native checks pending. Run later checks after PROGRESS marks their implementation available. Native Release/simulator evidence is still required before device acceptance. Use a test profile and record commit, Xcode version (owner reports 27.0), iOS/watchOS versions, device models and outcomes.
+WRITTEN — draft acceptance steps, not completed test evidence. Phases 1–3 are verified on the simulator; shell and phone Health/measurement checks are now available. Run later checks after PROGRESS marks their implementation available. Native Release/simulator evidence is still required before device acceptance. Use a test profile and record commit, Xcode version (owner reports 27.0), iOS/watchOS versions, device models and outcomes.
 
 Install/signing and initial Health authorization are prerequisites outside the timed run. Follow XCODE_SETUP and B-03, enable matching HealthKit/app-group entitlements once those targets exist, install iPhone/Watch apps, and select local mode. Seed a three-set routine and one timed/cardio exercise after the Watch implementation is available. Test steps below target under 30 minutes total.
 

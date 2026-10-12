@@ -36,7 +36,7 @@ Goal: BRIEF.md §10, branch apple-native. Read BRIEF.md in full before continuin
 
 ## Remaining phases
 
-Phases 2–10 follow the now-verified Phase 1 gate. Their required work and checks remain in PLAN and PARITY. No Watch, HealthKit or Oura implementation exists yet; the goal is incomplete.
+Phases 0–3 are closed with simulator and suite evidence below. Phases 4–10 remain in PLAN and PARITY. The Health bridge exists; Watch and Oura are still unbuilt, so the goal remains incomplete.
 
 ### Phase 1 oracle diagnosis (2026-10-12)
 - BLOCKED Apple run 38297653898 (39e1df3f): `gh api .../check-runs/.../annotations` reports native step exit 65; no compile/test success claimed. Original artifact host access remains denied (B-08).
@@ -67,7 +67,7 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 - Phase 2 exit complete: lossless models/envelope/identity, shared calculations and independently executed golden fixtures; baseline frontend 5,087 / API 596 / MCP 95 and web build passed.
 - Next: Phase 3 Apple Health mappings, idempotent store abstraction/mock and native plugin/UI; actual Health authorization/sensors remain device checks in B-04.
 
-## Phase 3: Apple Health bridge [OPEN 2026-10-12]
+## Phase 3: Apple Health bridge [CLOSED 2026-10-12]
 - VERIFIED official HKWorkoutBuilder docs support iOS 12/watchOS 5 and waistCircumference supports iOS 11/watchOS 4; available at selected iOS 17/watchOS 10 floors. HKWorkoutSession documentation earlier confirmed iPhone support at iOS 17.
 - Start tests around mapping, write identifiers, units and duplicate writes. Keep Apple frameworks outside OpenGymKit. Preserve Android Health Connect behaviour.
 - WRITTEN HealthKit native plugin, explicit simulator mock, canonical mapping/decoded validation, versioned writes and atomic consent/UUID preferences. No real HealthKit sensor/write claim yet.
@@ -96,3 +96,9 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 - VERIFIED latest mobile build/stage/copy/sync/bundle check → all three copies valid; Android Debug/unsigned Release → BUILD SUCCESSFUL (605 tasks, 64 executed, 541 up-to-date). Cached app JUnit remains 8 tests, zero failures/errors/skips. Logs apple-phase3-{mobile,android}-rounding.log.
 - VERIFIED rebuilt current self-hosted image and fresh nginx/API smoke → writable health, config, HTML/JS, licensed media, unauthenticated data 401 passed.
 - VERIFIED Apple run 38316005333/5e44697d package check 115032669242 → 24 Swift tests executed, zero failures. iPhone check 115032669260 remains in its native/UI step; keep Phase 3 open. New bridge fixtures use actual Capacitor coercion, invalid array inputs fail closed, and UI assertion diagnostics retain AX context.
+
+- VERIFIED final Apple run 38316005333/5e44697d: `bash scripts/apple/verify-iphone.sh` → OpenGym Release simulator build passed; 14 native/UI tests executed, 14 passed, zero failed/skipped. `gh api repos/toolbox-forks/OpenGym/check-runs/115032669260/annotations` reports those counts and Xcode 16.4 (16F6), arm64 host/x86_64 simulator.
+- VERIFIED native plugin-call tests write one completed workout with energy/UUID/interval, repeat delivery without a duplicate, read mapped measurements and reject malformed/NaN batches before any write. Atomic preferences reject invalid JSON and retain prior identity state. Simulator UI opt-in/purpose/relaunch and existing navigation tests pass.
+- BLOCKED real HealthKit authorization/write/read, permission withdrawal and live sensor behavior on owner device checks B-03/B-04, DEVICE_TEST_CHECKLIST items 7/9/11. Mock tests do not claim physical Health or heart-rate verification.
+- Phase 3 exit complete: source-preserving measurements, versioned workout/quantity mapping, contextual opt-in, native HealthKit implementation and persistent simulator mock; suites frontend 5,140 / API 596 / MCP 95 / OpenGymKit 24 / iPhone native/UI 14, web/self-hosted/Android builds green.
+- Next: commit Phase 3 closure, then open Phase 4 standalone Watch MVP, seeded local store and simulator acceptance.
