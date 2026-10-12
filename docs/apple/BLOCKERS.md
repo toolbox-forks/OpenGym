@@ -1,12 +1,13 @@
 # Apple blockers
 
-Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is incomplete. Phase 0 baseline validation passed; Phase 1 is next. No speculative feature is reported as shipped.
+Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is incomplete. Phases 0–1 closed; Phase 2 is next. No speculative feature is reported as shipped.
 
-### B-01 — macOS/Xcode build oracle
+### B-01 — macOS/Xcode build oracle [RESOLVED]
 - VERIFIED `uname -s` → Linux; `xcodebuild -version` → command not found.
 - Needed from owner: allow the macOS GitHub Actions workflow to run, or provide a Mac/Xcode run with the exact commit and xcresult.
 - Exact steps: after apple.yml is pushed, GitHub fork → Actions → enable workflows if disabled → run Apple workflow for apple-native. Follow XCODE_SETUP.md for local Release simulator build and standalone UI checks. Return the failing logs/xcresult if any; do not declare Apple targets verified merely because files exist.
-- Unblocks: Phase 1 simulator build/launch and all subsequent Apple compile gates; §10 requires macOS evidence.
+- VERIFIED Apple run 38301101740 passed Release build and 6 native/UI tests on Xcode 16.4 (arm64 host, x86_64 simulator destination). CI is accessible; no owner action is currently required for this oracle. Owner-reported Xcode 27.0 local run remains optional additional evidence.
+- Unblocks: subsequent Apple compile gates; each still needs its own CI evidence.
 - Work continuing meanwhile: Phase 0 plan and locally testable Phase 1 shell/CI preparation. Later phases remain ordered behind their predecessor gates.
 
 ### B-02 — GitHub API and Apple SDK documentation network access [RESOLVED]
@@ -48,8 +49,8 @@ Updated 2026-10-12. Owner reports Xcode 27.0 installed on her Mac. The goal is i
 - VERIFIED GitHub API metadata/status is readable, but `gh api repos/toolbox-forks/OpenGym/actions/jobs/114972808235/logs` redirects to productionresultssa3.blob.core.windows.net, which the proxy refuses. `curl -I https://productionresultssa3.blob.core.windows.net` → CONNECT HTTP 403. Signed log URLs are not recorded here.
 - Needed from owner: save/apply the latest environment network draft including productionresultssa3.blob.core.windows.net, or supply the CI evidence artifact from the Apple run / a local Xcode 27.0 run.
 - Exact steps: environment settings → review/add that exact artifact hostname → Save and publish if prompted. Alternatively fork Actions → Apple run 38297653898 → download iphone-evidence artifact; attach its iphone-release.log, iphone-tests.log and xcresult. For local evidence follow XCODE_SETUP.md on the owner Mac and attach the same output.
-- Unblocks: inspecting actual compiler/test outcomes and confirming nonzero native tests. CI is still running; no successful Apple build is claimed.
-- Remaining work behind this gate: close Phase 1 only after diagnosing native outcomes; then Phase 2 OpenGymKit, Phase 3 Health bridge, Phase 4 Watch MVP, Phase 5 sync, Phase 6 parity, Phase 7 progress, Phase 8 integrations, Phase 9 Oura and Phase 10 hardening/PR report in order. PLAN/PARITY specify the exact work and test gates; none is silently deferred or claimed implemented.
+- Full artifact downloads remain denied, but standard Actions annotations now provide native failures, runner version, build success and nonzero test counts through the working GitHub API. Phase 1 passed. This log-download restriction no longer blocks phase progression.
+- Remaining work: Phases 2–10 continue in order now that Phase 1 passed. Full evidence artifacts can be inspected by the owner or when this domain is allowed. PLAN/PARITY specify the exact work and test gates; none is silently deferred or claimed implemented.
 
 ### B-09 — Optional Linux Swift toolchain verification
 - VERIFIED the Swift Docker runtime reported 6.2.4, but a later container launch exhausted disk; the owned image/downloads were removed. Do not retry that image in this machine.

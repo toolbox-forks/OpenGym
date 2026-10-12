@@ -1,6 +1,6 @@
 # Build the iPhone app from Xcode
 
-WRITTEN — these Apple commands require their first Mac/CI execution (B-01). Linux web checks do not prove an Xcode build. Phase 1 supplies OpenGym; OpenGym Watch App will be introduced in Phase 4. App Store submission is outside this goal.
+WRITTEN setup guide — Release simulator build and all 6 native/UI tests passed in Apple CI run 38301101740 on Xcode 16.4 after the simulator architecture correction. Linux web checks alone do not prove an Xcode build. Phase 1 supplies OpenGym; OpenGym Watch App will be introduced in Phase 4. App Store submission is outside this goal.
 
 Owner reports Xcode **27.0** installed locally on 2026-10-12. Local availability/version is owner-reported; run `xcodebuild -version` on that Mac and retain the result with simulator evidence. CI records its own installed Xcode version and may differ.
 

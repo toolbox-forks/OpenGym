@@ -38,3 +38,5 @@
 - Existing Google ML Kit 7.x transitively configures arm64 simulator exclusion for the app. The CocoaPods post-install applies the same simulator-only exclusion to every pod configuration; the app project propagates it to both test targets as well. The verify script selects the x86_64 simulator destination explicitly, avoiding mismatched Debug/test slices. Physical iPhone arm64 remains enabled.
 - Alternatives weighed: overriding all SDK architectures globally (risks real-device builds); removing the existing scanner (breaks existing functionality); replacing its dependency (unneeded during this phase).
 - Consequence: rerun both simulator Release and native/UI tests before closing Phase 1. Log runner architecture/Xcode version through an Actions notice as well as normal stdout. Do not claim simulator camera scans validate real-device scanning.
+
+- VERIFIED official pinned podspec `https://cdn.cocoapods.org/Specs/b/e/b/GoogleMLKit/7.0.0/GoogleMLKit.podspec.json` → both pod_target_xcconfig and user_target_xcconfig exclude arm64 for iphonesimulator. The diagnosis follows the actual dependency declaration.

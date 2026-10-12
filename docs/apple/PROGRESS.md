@@ -14,8 +14,9 @@ Goal: BRIEF.md §10, branch apple-native. Read BRIEF.md in full before continuin
 - BLOCKED self-hosted image verification: `BUILDX_CONFIG=/workspace/.docker-buildx docker build --target default -t opengym-apple-baseline-api:local ./api` → APKINDEX HTTP 403, B-07. No verification disabled. This is an additional baseline integration check; Phase 0 specified suite and web gates passed.
 - Next: Phase 1 iPhone shell and macOS oracle. Re-run full suites before its closure.
 
-## Phase 1: iPhone shell in Xcode [OPEN 2026-10-12]
-- WRITTEN OpenGym shared scheme, iOS 17 owner xcconfig chain, CocoaPods workspace, native AppleShell Swift plugin and bridge registration. Existing printing/Capacitor plugins remain registered.
+## Phase 1: iPhone shell in Xcode [CLOSED 2026-10-12]
+- BUILT native AppleShell/bridge/geometry and OpenGym Release simulator app at f8db7365 (Apple run 38299276900). Unit/UI tests still pending after the architecture fix.
+- WRITTEN OpenGym shared scheme, iOS 17 owner xcconfig chain and workspace; existing printing/Capacitor plugins remain registered.
 - WRITTEN five XCTest geometry tests and one XCUITest standalone mode/navigation/relaunch smoke test. Native targets have not compiled yet on this Linux host.
 - VERIFIED focused JS bridge/keyboard/sound checks: `npm --prefix frontend test -- --maxWorkers=2 src/lib/apple-shell.test.js src/lib/native-keyboard.test.js src/lib/rest-sounds.test.js` → 22 passed.
 - WRITTEN macOS Apple workflow, dynamic simulator selection, Release/test evidence capture, and XCODE_SETUP for first-time use.
@@ -29,16 +30,24 @@ Goal: BRIEF.md §10, branch apple-native. Read BRIEF.md in full before continuin
 - VERIFIED Android `JAVA_HOME=/workspace/.tools/jdk-21.0.12.1+1 ANDROID_HOME=/workspace/.android-sdk ANDROID_USER_HOME=/workspace/.android-user GRADLE_USER_HOME=/workspace/.gradle ./gradlew --no-daemon --max-workers=2 assembleDebug testDebugUnitTest` → BUILD SUCCESSFUL (272 tasks), nonzero app JUnit suites passed; APK generated.
 - VERIFIED Android unsigned Release `./gradlew --no-daemon --max-workers=2 assembleRelease` with the same JDK/SDK environment → BUILD SUCCESSFUL (342 tasks); app-release-unsigned.apk generated (211 MiB). Debug app tests: RestTone 7 + Example 1, no failures/errors/skips.
 - BLOCKED CI log/result download on B-08: API status works, artifact destination returns proxy CONNECT 403. CI itself remains in progress. No Apple result is claimed.
-- Next: inspect macOS Release/test results and fix failures. Keep Phase 1 open until native gate is met.
+- VERIFIED final Apple run 38301101740 / 6ea29ace: `bash scripts/apple/verify-iphone.sh` → Release simulator build succeeded; 6 native/UI tests executed, 6 passed, 0 failed, 0 skipped. Runner arm64, Xcode 16.4 (16F6). `gh api repos/toolbox-forks/OpenGym/check-runs/114985746085/annotations` supplies build/test counts.
+- BLOCKED physical UIKit haptics and device-specific notch/keyboard checks on B-04, DEVICE_TEST_CHECKLIST items 1–2. Geometry and standalone mode/navigation/relaunch were verified on the simulator.
+- Next: commit Phase 1 closure, then Phase 2 OpenGymKit models/contract/calculators and shared golden fixtures.
 
 ## Remaining phases
 
-Phases 2–10 are ordered behind Phase 1's gate. Their required work and checks remain in PLAN and PARITY. No Watch, HealthKit or Oura implementation exists yet; the goal is incomplete.
+Phases 2–10 follow the now-verified Phase 1 gate. Their required work and checks remain in PLAN and PARITY. No Watch, HealthKit or Oura implementation exists yet; the goal is incomplete.
 
 ### Phase 1 oracle diagnosis (2026-10-12)
 - BLOCKED Apple run 38297653898 (39e1df3f): `gh api .../check-runs/.../annotations` reports native step exit 65; no compile/test success claimed. Original artifact host access remains denied (B-08).
 - VERIFIED local CI reporter exercise → passing six-test summary accepted, zero-test run rejected, compiler error emitted as a standard Actions annotation.
-- WRITTEN f8db7365 publishes concise native errors and xcresult test counts in the workflow so the working check-runs API can diagnose failures without depending on artifact downloads. New run pending; Phase 1 remains open.
+- WRITTEN f8db7365 publishes concise native errors and xcresult test counts in the workflow so the working check-runs API can diagnose failures without depending on artifact downloads. The diagnostic rerun exposed the simulator architecture mismatch; the later 6ea29ace run passed.
 - WRITTEN draft DEVICE_TEST_CHECKLIST includes the current shell haptic/keyboard owner checks plus explicitly future-phase acceptance steps; no physical test is claimed.
 - VERIFIED Apple run 38299276900/f8db7365 Actions annotations → OpenGym Release simulator build passed. Native Debug tests failed: Capacitor arm64 module versus App x86_64 request. CI metadata diagnostics work; no simulator test pass claimed.
 - WRITTEN ADR-007 aligns simulator-only architecture exclusions across pods, with device arm64 untouched; next rerun must pass the native test count gate.
+- VERIFIED PBX Debug/Release project configurations now propagate the simulator-only exclusion; physical arm64 is unaffected. Official Google ML Kit 7.0.0 podspec confirms the exclusion (ADR-007).
+- WRITTEN 6ea29ace is pushed; Apple run 38301101740 is queued for the consistent app/pod/test destination. That run subsequently passed all 6 native/simulator tests.
+
+## Phase 2: OpenGymKit [NEXT]
+- Start with tests and shared fixtures. Mac CI is available for Swift package tests; do not reintroduce the oversized Swift Docker image on this Linux disk.
+- Native deployment minima and simulator-only ML Kit settings are documented in ADR-003/007. Run full JS suites and Swift fixture suite before closure.
