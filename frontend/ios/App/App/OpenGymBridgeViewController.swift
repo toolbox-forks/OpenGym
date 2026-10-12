@@ -8,6 +8,7 @@ final class OpenGymBridgeViewController: CAPBridgeViewController {
 
     override func capacitorDidLoad() {
         bridge?.registerPluginInstance(appleShell)
+        bridge?.registerPluginInstance(HealthPlugin())
     }
 
     override func viewSafeAreaInsetsDidChange() {

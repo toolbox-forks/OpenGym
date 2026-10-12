@@ -34,6 +34,8 @@
 		AC0000000000000000000004 = {isa = PBXBuildFile; fileRef = AC0000000000000000000003; };
 		AD0000000000000000000004 = {isa = PBXBuildFile; fileRef = AD0000000000000000000003; };
 		AE0000000000000000000003 /* OpenGymKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE0000000000000000000002; };
+		AF0000000000000000000002 = {isa = PBXBuildFile; fileRef = AF0000000000000000000001; };
+		AF0000000000000000000004 = {isa = PBXBuildFile; fileRef = AF0000000000000000000003; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		AC0000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = AppleShellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD0000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandaloneSmokeTests.swift; sourceTree = "<group>"; };
 		AD0000000000000000000005 = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = OpenGymUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF0000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPlugin.swift; sourceTree = "<group>"; };
+		AF0000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPluginTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 				AB0000000000000000000007 /* ShellGeometry.swift */,
 				AB0000000000000000000001 /* OpenGymBridgeViewController.swift */,
 				AB0000000000000000000003 /* AppleShellPlugin.swift */,
+                AF0000000000000000000001,
 				AA0100000000000000000001 /* PrintPlugin.swift */,
 				AA0100000000000000000003 /* PrintPlugin.m */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
@@ -140,7 +145,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		AC0000000000000000000002 = {isa = PBXGroup; children = (AC0000000000000000000003,); path = AppleShellTests; sourceTree = "<group>"; };
+		AC0000000000000000000002 = {isa = PBXGroup; children = (AC0000000000000000000003, AF0000000000000000000003,); path = AppleShellTests; sourceTree = "<group>"; };
 		AD0000000000000000000002 = {isa = PBXGroup; children = (AD0000000000000000000003,); path = OpenGymUITests; sourceTree = "<group>"; };
 /* End PBXGroup section */
 
@@ -270,12 +275,13 @@
 				AB0000000000000000000008 /* ShellGeometry.swift in Sources */,
 				AB0000000000000000000002 /* OpenGymBridgeViewController.swift in Sources */,
 				AB0000000000000000000004 /* AppleShellPlugin.swift in Sources */,
+                AF0000000000000000000002,
 				AA0100000000000000000002 /* PrintPlugin.swift in Sources */,
 				AA0100000000000000000004 /* PrintPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC0000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AC0000000000000000000004,); runOnlyForDeploymentPostprocessing = 0; };
+		AC0000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AC0000000000000000000004, AF0000000000000000000004,); runOnlyForDeploymentPostprocessing = 0; };
 		AD0000000000000000000006 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (AD0000000000000000000004,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
@@ -416,6 +422,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
+                CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
@@ -436,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = App/Info.plist;
+                CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
