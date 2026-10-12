@@ -143,7 +143,13 @@ final class HealthPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "read", returnType: CAPPluginReturnPromise)
     ]
     private let real = AppleHealthStore()
+    #if DEBUG
+    var testingStore: MockHealthRecordStore?
+    #endif
     private var store: any HealthRecordStore { get throws {
+        #if DEBUG
+        if let testingStore { return testingStore }
+        #endif
         #if targetEnvironment(simulator)
         if let mock { return mock }
         let folder = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]

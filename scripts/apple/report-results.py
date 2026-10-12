@@ -34,7 +34,7 @@ else:
     passed = int(summary['passedTests'])
     failed = int(summary['failedTests'])
     skipped = int(summary['skippedTests'])
-    if total < 12 or passed != total or failed or skipped:
-        annotation('error', f'Native test gate failed: {total} total, {passed} passed, {failed} failed, {skipped} skipped; require at least 12 executed passing tests.')
+    if total < 14 or passed != total or failed or skipped:
+        annotation('error', f'Native test gate failed: {total} total, {passed} passed, {failed} failed, {skipped} skipped; require at least 14 executed passing tests.')
         raise SystemExit(1)
     annotation('notice', f'VERIFIED OpenGym native/simulator tests: {total} executed, {passed} passed, {failed} failed, {skipped} skipped.')

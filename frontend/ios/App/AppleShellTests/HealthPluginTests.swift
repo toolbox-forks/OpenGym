@@ -1,5 +1,7 @@
 import XCTest
 import HealthKit
+import Capacitor
+import OpenGymKit
 @testable import App
 
 final class HealthPluginTests: XCTestCase {
@@ -43,5 +45,48 @@ final class HealthPluginTests: XCTestCase {
         XCTAssertEqual(try HealthPreferencesFile.read(file)["id"] as? String, "stable")
         try Data("{broken".utf8).write(to: file)
         XCTAssertThrowsError(try HealthPreferencesFile.read(file))
+    }
+    private enum CallError: Error { case rejected(String) }
+    private func invoke(_ plugin: HealthPlugin, method: String, options: [String: Any]) async throws -> [String: Any] {
+        try await withCheckedThrowingContinuation { continuation in
+            guard let call = CAPPluginCall(callbackId: UUID().uuidString, methodName: method, options: options,
+                success: { result, _ in continuation.resume(returning: result?.data ?? [:]) },
+                error: { error in continuation.resume(throwing: CallError.rejected(error?.code ?? "unknown")) }) else {
+                continuation.resume(throwing: CallError.rejected("call")); return
+            }
+            if method == "write" { plugin.write(call) } else { plugin.read(call) }
+        }
+    }
+    private var workoutOptions: [String: Any] {
+        ["clientId": "opengym-w-old-id", "uuid": "bd0c1f64-9e48-4a29-a81e-4dcfcf79e218", "title": "Strength",
+         "start": 1000.0, "end": 61000.0, "energyKcal": 120.0, "version": 1]
+    }
+    func testNativeBridgeWritesCompletedWorkoutOnceAndReadsMeasurements() async throws {
+        let store = try MockHealthRecordStore(), plugin = HealthPlugin()
+        plugin.testingStore = store
+        let options: [String: Any] = ["workouts": [workoutOptions], "measurements": [
+            ["clientId": "mass", "kind": "bodyMass", "value": 80.0, "time": 2000.0],
+            ["clientId": "waist", "kind": "waist", "value": 0.85, "time": 2000.0]
+        ]]
+        _ = try await invoke(plugin, method: "write", options: options)
+        _ = try await invoke(plugin, method: "write", options: options)
+        let saved = await store.workouts()
+        XCTAssertEqual(saved.count, 1); XCTAssertEqual(saved[0].energyKcal, 120)
+        XCTAssertEqual(saved[0].uuid, workoutOptions["uuid"] as? String)
+        XCTAssertEqual(saved[0].end - saved[0].start, 60000)
+        let read = try await invoke(plugin, method: "read", options: ["since": 0])
+        XCTAssertEqual(read["mode"] as? String, "mock")
+        let measurements = try XCTUnwrap(read["measurements"] as? [[String: Any]])
+        XCTAssertEqual(measurements.count, 2)
+        XCTAssertEqual(measurements.first(where: { $0["kind"] as? String == "waist" })?["value"] as? Double, 0.85)
+    }
+    func testNativeBridgeRejectsWholeMalformedBatchBeforeAnyWrite() async throws {
+        let store = try MockHealthRecordStore(), plugin = HealthPlugin()
+        plugin.testingStore = store
+        do {
+            _ = try await invoke(plugin, method: "write", options: ["workouts": [workoutOptions, ["clientId": "bad", "uuid": "broken"]]])
+            XCTFail("Malformed batch accepted")
+        } catch CallError.rejected(let code) { XCTAssertEqual(code, "mapping") }
+        let saved = await store.workouts(); XCTAssertTrue(saved.isEmpty)
     }
 }

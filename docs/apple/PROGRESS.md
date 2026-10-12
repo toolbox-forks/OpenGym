@@ -84,3 +84,6 @@ Phases 2–10 follow the now-verified Phase 1 gate. Their required work and chec
 - VERIFIED fresh unchanged-checkout frontend `npm test -- --maxWorkers=2` → 409 files / 5,137 passed, zero failures (apple-phase3-frontend-stable.log). The prior overlapping-edit run failed the newly added storage-error test; the clean run verifies it along with the full baseline.
 - VERIFIED latest Apple package run 38311199548/58ccdb6e check 115017077211 → 24 Swift tests executed, zero failures. iPhone Release/native/UI gate remains pending after the completion-callback fix.
 - Full API now runs alone at concurrency 1; mobile/web builds will be refreshed after it completes. Keep Phase 3 open until the native and suite gates finish.
+- VERIFIED full serial API → all 596 passed, zero failures/skips; all current JS gates green at frontend 5,137 / API 596 / MCP 95.
+- VERIFIED final web build passed and its entry JS SHA-256 matches the rebuilt self-hosted image. Final mobile copies/bundle validation passed; latest Android Debug/unsigned Release build → BUILD SUCCESSFUL (605 tasks, 64 executed, 541 up-to-date).
+- WRITTEN two native plugin-call tests exercise actual CAPPluginCall decoding/write/read through an isolated mock store, repeated completed-workout delivery and whole-batch rejection before writes. Native count gate rises to 14; awaiting compile/test evidence.
