@@ -21,7 +21,9 @@ end
 
 target 'App' do
   capacitor_pods
-  # Add your Pods here
+  target 'AppleShellTests' do
+    inherit! :search_paths
+  end
 end
 
 post_install do |installer|
