@@ -22,3 +22,13 @@
 - OpenStep parser 2.0.3 (MIT, installed outside the repository) validates existing PBX syntax/references on Linux; it is validation tooling, not an app dependency. Xcode remains the compile oracle.
 - CocoaPods 1.16.2 remains the existing Apple dependency manager; CI pins the tool without replacing the existing dependency declarations.
 - Verified LANGS has 20 selectable languages: 18 packs + English + Swiss German derived from German. Earlier README/brief counts are stale; preserve the derived locale as well.
+
+### ADR-005 — Distinguish owner Xcode from CI evidence (2026-10-12)
+- Owner reports Xcode 27.0 installed locally. Cloud remains Linux; no local-Mac build is claimed.
+- CI emits xcodebuild version/SDK availability; local instructions accept Xcode 27.0 with the same iOS 17/watchOS 10 floors. Record the actual runner version with each verified build.
+- Official HKWorkoutSession documentation at developer.apple.com/tutorials/data/documentation/healthkit/hkworkoutsession.json was retrieved and confirms iOS 17, watchOS 2 availability; iPhone-side workout sessions are supported at the proposed floor.
+
+### ADR-006 — Cloud-only build prerequisites (2026-10-12)
+- Node/API/nginx images do not inherit the cloud proxy's configured root CA. Local Dockerfile overlays outside the checkout copy the platform's public trust bundle before TLS downloads; package signatures and TLS verification remain enabled. Android Gradle uses its supported Java proxy properties and a copy of the system truststore augmented with the platform CA certificates.
+- Cloud checkouts have 0600/0700 source permissions. The local nginx image overlay grants its public template/static tree the read/search modes a normal Git checkout has. This corrects setup permissions, not application code; canonical Dockerfiles remain unchanged.
+- Java 21 in the base machine is a JRE without javac. Temurin JDK 21.0.12.1+1 is installed outside the repository after checking its official release SHA-256. Swift 6.2.4 is available in the verified Docker runtime image for pure Linux package tests.
