@@ -102,3 +102,9 @@ Phases 0–3 are closed with simulator and suite evidence below. Phases 4–10 r
 - BLOCKED real HealthKit authorization/write/read, permission withdrawal and live sensor behavior on owner device checks B-03/B-04, DEVICE_TEST_CHECKLIST items 7/9/11. Mock tests do not claim physical Health or heart-rate verification.
 - Phase 3 exit complete: source-preserving measurements, versioned workout/quantity mapping, contextual opt-in, native HealthKit implementation and persistent simulator mock; suites frontend 5,140 / API 596 / MCP 95 / OpenGymKit 24 / iPhone native/UI 14, web/self-hosted/Android builds green.
 - Next: commit Phase 3 closure, then open Phase 4 standalone Watch MVP, seeded local store and simulator acceptance.
+
+## Phase 4: Watch standalone MVP [OPEN 2026-10-12]
+- Phase 3 closed and committed before opening this phase. Begin with atomic active-session storage and shared deterministic logging/editing tests, then native SwiftUI/HealthKit/simulator targets.
+- VERIFIED official XCUIApplication documentation now resides under XCUIAutomation and lists watchOS; Xcode availability introduced 16.3. Confirm the actual watchOS build/test target in the macOS oracle before claiming simulator UI support.
+- WRITTEN shared Watch session machine and atomic repository/journal. Catalogue ids stay unchanged; new workouts/entries/sets get device UUIDs/timestamps. Rendered set UUID prevents a stale/double callback from ticking the next set. Previous/progression context, timed/cardio quantities, supersets, tags, editing and rest deadlines are covered.
+- WRITTEN 15 Watch core tests: routine/empty start, prefill/reason, adjustments/effort, three sets/rest/finish, alternating supersets, exercise/set edits, modes/tags, summaries, relaunch, torn finish and failed/corrupt journal. Package count gate rises from 24 to 39. Swift compilation still pending; no Watch target/UI exists yet.
