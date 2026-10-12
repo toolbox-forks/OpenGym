@@ -83,3 +83,13 @@ it('rejects syntactically valid but corrupt identity maps', async () => {
   await expect(health.loadAppleHealth()).rejects.toThrow('Invalid Apple Health preferences')
   expect(m.write).not.toHaveBeenCalled()
 })
+
+it('does not reread Health or rewrite preferences for every unchanged active-set edit', async () => {
+  await health.enableAppleHealth(S)
+  const saves = m.savePreferences.mock.calls.length
+  await health.syncAppleHealth({ ...S, active: { entries: [{ sets: [{ reps: 5 }] }] } })
+  expect(m.read).toHaveBeenCalledOnce(); expect(m.write).toHaveBeenCalledOnce()
+  expect(m.savePreferences).toHaveBeenCalledTimes(saves)
+  await health.syncAppleHealth(S, { read: true })
+  expect(m.read).toHaveBeenCalledTimes(2)
+})

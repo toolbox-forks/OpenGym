@@ -4,6 +4,7 @@ import { appleHealthRecords, planAppleHealth, mergeHealthMeasurements } from './
 export const APPLE_HEALTH_FILE = 'opengym-apple-health.json'
 let bridgeP, cached, loading, running, pending, store
 let saves = Promise.resolve()
+let pendingRead = false
 const listeners = new Set()
 const bridge = () => bridgeP ||= (async () => {
   if (!MOBILE) return null
@@ -40,24 +41,27 @@ function save(value) {
 }
 export const onAppleHealthChange = cb => { listeners.add(cb); return () => listeners.delete(cb) }
 export async function appleHealthStatus() { return (await bridge())?.health.status() || { mode: 'unsupported' } }
-export function syncAppleHealth(S) {
+export function syncAppleHealth(S, { read = false } = {}) {
   if (!cached?.on) return Promise.resolve(cached)
   pending = S
+  pendingRead ||= read
   if (running) return running
   running = (async () => {
     while (pending && cached.on) {
       const next = pending; pending = null
+      const wantsRead = pendingRead; pendingRead = false
       const p = await bridge()
       if (!p) break
       try {
         const records = appleHealthRecords(next, cached.identities)
         // Persist identities before invoking native writes: a crash cannot change the retry's UUID.
-        await save({ ...cached, identities: records.identities })
+        if (JSON.stringify(records.identities) !== JSON.stringify(cached.identities)) await save({ ...cached, identities: records.identities })
         if (!cached.on) break
         const plan = planAppleHealth(records, cached.written)
         if (plan.workouts.length || plan.measurements.length) await p.health.write({ workouts: plan.workouts, measurements: plan.measurements })
-        await save({ ...cached, written: plan.written, error: null, at: Date.now() })
+        if (plan.workouts.length || plan.measurements.length || cached.error) await save({ ...cached, written: plan.written, error: null, at: Date.now() })
         if (!cached.on) break
+        if (!wantsRead) continue
         const read = await p.health.read({ since: 0 })
         if (store) {
           const current = store.getState().S
@@ -76,7 +80,7 @@ export async function enableAppleHealth(S) {
   await p.health.authorize() // Only this explicit user action opens authorization.
   await loadAppleHealth()
   await save({ ...cached, on: true, error: null })
-  const h = await syncAppleHealth(S)
+  const h = await syncAppleHealth(S, { read: true })
   return { ok: !h?.error, health: h }
 }
 export async function disableAppleHealth() {
@@ -93,7 +97,7 @@ export async function startAppleHealth(nextStore) {
   await loadAppleHealth()
   const off = store.subscribe((state, old) => { if (state.S !== old.S) syncAppleHealth(state.S).catch(() => {}) })
   const { App } = await import('@capacitor/app')
-  const listener = await App.addListener('appStateChange', ({ isActive }) => { if (isActive) syncAppleHealth(store.getState().S).catch(() => {}) })
-  await syncAppleHealth(store.getState().S)
+  const listener = await App.addListener('appStateChange', ({ isActive }) => { if (isActive) syncAppleHealth(store.getState().S, { read: true }).catch(() => {}) })
+  await syncAppleHealth(store.getState().S, { read: true })
   return async () => { off(); await listener.remove() }
 }
